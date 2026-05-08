@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="KH Infra Equipment — Indian manufacturer of concrete mixers, bar bending & cutting machines, tower hoists, vibrators and construction equipment. Shipping pan-India since 2009." />
+<meta name="keywords" content="construction equipment, concrete mixer, bar bending machine, bar cutting machine, tower hoist, monkey crane, vibrator, KH Infra, Jaipur" />
+<meta property="og:title" content="KH Infra Equipment — Heavy machines, made honestly." />
+<meta property="og:description" content="Indian manufacturer of construction equipment. Pan-India shipping with 12-month warranty." />
+<meta property="og:type" content="website" />
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P4RNQT4ZDV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P4RNQT4ZDV');
+</script>
+<title>KH Infra Equipment — Heavy machines, made honestly.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   COLOR SYSTEM — pulled from the KH machine reference photo
+   cobalt blue body · safety yellow panel · signal red · concrete
+   ============================================================ */
+:root {
+  /* brand — single restrained accent */
+  --accent: #1d4ed8;          /* one navy-ish blue used sparingly */
+  --accent-2: #1e40af;
+  --accent-3: #172554;
+
+  /* neutrals — clean grays */
+  --bg:    #ffffff;
+  --bg-2:  #fafafa;
+  --bg-3:  #f4f4f5;
+  --bg-4:  #e4e4e7;
+  --ink:   #18181b;
+  --ink-2: #3f3f46;
+  --ink-3: #52525b;
+  --muted: #71717a;
+  --line:  #e4e4e7;
+  --line-2:#d4d4d8;
+  --line-soft: rgba(24,24,27,.08);
+
+  /* functional */
+  --wa: #16a34a;
+  --wa-dark:#15803d;
+
+  --radius: 4px;
+  --radius-lg: 8px;
+  --maxw: 1200px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.06);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* reset */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif; background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+}
+img { display:block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+.serif { font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono  { font-family: 'Inter', sans-serif; }
+.caps  { text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; font-weight: 500;}
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 48px; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251,248,242,.9);
+  backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 48px;
+  max-width: var(--maxw);
+}
+.logo {
+  display:flex; align-items: center; gap: 10px;
+}
+.logo .mark { width: 38px; height: 38px; border-radius: 6px; background: #0c1c4d; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.logo .mark img { width: 100%; height: 100%; object-fit: cover; }
+.logo .word { font-family:'Inter',sans-serif; font-size: 17px; letter-spacing: -0.01em; font-weight: 700;}
+.logo .tag { font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-left: 2px; }
+
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  font-size: 14px; color: var(--ink-2);
+  padding: 8px 0; position: relative;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.on { color: var(--ink); }
+.nav-links a.on::after {
+  content:""; position:absolute; left:0; right:0; bottom: -2px;
+  height: 2px; background: var(--accent);
+}
+
+.nav-cta { display:flex; gap: 10px; align-items: center; }
+.hamburger { display: none; width: 38px; height: 38px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--line); align-items:center; justify-content:center; cursor: pointer; padding: 0;}
+.hamburger svg { width: 18px; height: 18px;}
+.mobile-menu { display: none; position: fixed; inset: 0; z-index: 100; background: var(--bg);}
+.mobile-menu.open { display: flex; flex-direction: column;}
+.mobile-menu .mm-head { display:flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--line);}
+.mobile-menu .mm-close { width: 38px; height: 38px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size: 18px; cursor: pointer;}
+.mobile-menu .mm-links { padding: 24px 20px; display:flex; flex-direction: column; gap: 4px;}
+.mobile-menu .mm-links a { padding: 14px 0; font-size: 18px; color: var(--ink); border-bottom: 1px solid var(--line);}
+.mobile-menu .mm-cta { padding: 20px; margin-top: auto; display:flex; flex-direction: column; gap: 10px;}
+.mobile-menu .mm-cta .btn { width: 100%; justify-content: center; padding: 14px;}
+.btn {
+  display:inline-flex; align-items:center; gap: 8px;
+  padding: 10px 16px; border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  border: 1px solid transparent; transition: all .15s;
+  white-space: nowrap;
+}
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.primary:hover { background: var(--accent); }
+.btn.ghost   { background: transparent; color: var(--ink); border-color: var(--line-soft); }
+.btn.ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.wa      { background: var(--wa); color: #fff; }
+.btn.wa:hover{ background: var(--wa-dark); }
+.btn.yellow  { background: var(--accent); color: var(--ink); }
+.btn.yellow:hover { background: var(--accent); }
+.btn.lg { padding: 14px 20px; font-size: 15px; gap: 10px; }
+.btn.lg svg:first-child { margin-left: 2px; }
+.btn svg { width: 16px; height: 16px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { padding: 72px 0 48px; position: relative; overflow: hidden;}
+.hero-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; align-items: center; }
+.eyebrow { display:flex; align-items:center; gap: 10px; color: var(--ink-2); font-size: 12px; margin-bottom: 24px; }
+.eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(194,59,34,.18); }
+.eyebrow b { font-weight: 600; color: var(--ink); letter-spacing: 0.12em; text-transform: uppercase; }
+.hero h1 { font-family:'Inter',sans-serif; font-size: 64px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 24px; font-weight: 600; color: var(--ink);}
+.hero h1 em { font-style: normal; color: var(--ink);}
+.hero h1 .hl { background: transparent; padding: 0; margin: 0; font-style: normal;}
+.hero .lede {
+  font-size: 19px; line-height: 1.5; color: var(--ink-2);
+  max-width: 500px; margin: 0 0 32px;
+}
+.hero-actions { display:flex; gap: 12px; margin-bottom: 44px; flex-wrap: wrap;}
+.hero-meta {
+  padding-top: 28px; border-top: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  max-width: 560px;
+}
+.hero-meta .m b { font-family:'Inter',sans-serif; font-size: 26px; display:block; line-height: 1; letter-spacing: -0.02em; font-weight: 600;}
+.hero-meta .m span {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-top: 6px; display: block;
+}
+
+/* hero feature card */
+.hero-feat { aspect-ratio: 4/3; background: var(--bg-2); border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--line); isolation: isolate;}
+.hero-feat::before {
+  content:""; position:absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,.12), transparent 50%),
+    radial-gradient(circle at 80% 90%, rgba(0,0,0,.3), transparent 50%);
+  pointer-events: none;
+}
+.hero-feat img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1;}
+.hero-feat .stripe { position: absolute; top: 0; left: 0; right: 0; height: 36px; background: var(--bg); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-family: 'Inter', sans-serif; font-size: 10px; color: var(--ink-3); letter-spacing: 0.06em;}
+.hero-feat .stripe::before {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(0,0,0,.08) 14px 16px);
+  pointer-events: none;
+}
+.hero-feat .caption { position: absolute; left: 16px; right: 16px; bottom: 16px; background: var(--bg); padding: 14px 16px; border-radius: var(--radius); border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: end; gap: 12px;}
+.hero-feat .caption .name { font-family:'Inter',sans-serif; font-size: 16px; line-height: 1.3; font-weight: 600;}
+.hero-feat .caption .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 4px; }
+.hero-feat .caption .price { font-family: 'Inter', sans-serif; font-size: 14px; text-align: right; white-space: nowrap; }
+.hero-feat .caption .price b { display:block; font-size: 16px; color: var(--ink); font-weight: 600;}
+
+.hero-feat .emergency {
+  position: absolute; top: 60px; right: 18px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #e55, var(--accent) 60%, #7a1a0f);
+  box-shadow: 0 4px 8px rgba(0,0,0,.4), inset 0 -2px 4px rgba(0,0,0,.3);
+}
+
+/* color swatches strip — hidden decoration to tie brand in */
+.ticker {
+  padding: 12px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+  background: var(--bg);
+  overflow: hidden;
+}
+.ticker-inner {
+  display: flex; gap: 48px; align-items: center;
+  font-size: 13px; color: var(--ink-2);
+  white-space: nowrap;
+  animation: tick 40s linear infinite;
+}
+.ticker-inner b { color: var(--ink); font-weight: 600; }
+.ticker-inner span { display:flex; align-items: center; gap: 10px; }
+.ticker-inner i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display:block; font-style: normal; }
+@keyframes tick { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+
+/* ============================================================
+   CATALOG
+   ============================================================ */
+.section { padding: 80px 0; }
+.section-head { display: flex; align-items: end; justify-content: space-between; margin-bottom: 36px; gap: 32px;}
+.section-head h2 { font-family:'Inter',sans-serif; font-size: 40px; letter-spacing: -0.02em; line-height: 1.1; margin: 0; font-weight: 600;}
+.section-head h2 em { font-style: normal; color: var(--ink);}
+.section-head .sub { max-width: 420px; color: var(--ink-2); font-size: 15px; line-height: 1.55; }
+
+.cat-row {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.cat-chip {
+  display:inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 13px; color: var(--ink-2);
+  border: 1px solid var(--line-soft); background: var(--bg);
+  transition: all .15s;
+}
+.cat-chip:hover { border-color: var(--ink); color: var(--ink); }
+.cat-chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink);}
+.cat-chip .n { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); }
+.cat-chip.on .n { color: rgba(255,255,255,.6);}
+
+/* product grid */
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 24px; }
+.p {
+  cursor: pointer; display: block;
+  transition: transform .2s ease;
+}
+.p:hover { transform: translateY(-2px); }
+.p .ph {
+  aspect-ratio: 1/1;
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden; position: relative;
+  border: 1px solid var(--line-soft);
+  transition: border-color .15s, box-shadow .2s;
+}
+.p:hover .ph { border-color: var(--ink-2); box-shadow: var(--shadow-md); }
+.p .ph img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s ease;
+}
+.p:hover .ph img { transform: scale(1.04); }
+.p .ph .tl {
+  position: absolute; top: 12px; left: 14px;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink); background: var(--bg); padding: 3px 7px; border-radius: 3px;
+}
+.p .ph .tr {
+  position: absolute; top: 12px; right: 12px;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg); color: var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  opacity: 0; transition: opacity .15s, background .15s, color .15s;
+  font-size: 16px;
+}
+.p:hover .ph .tr { opacity: 1; }
+.p .ph .tr:hover { background: var(--ink); color: var(--bg); }
+.p .info { margin-top: 14px; }
+.p .info .row { display:flex; justify-content: space-between; align-items: baseline; gap: 16px;}
+.p .info .name { font-family:'Inter',sans-serif; font-size: 15px; line-height: 1.35; letter-spacing: -0.005em; font-weight: 500; color: var(--ink); flex: 1;}
+.p .info .price { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink); white-space: nowrap;}
+
+/* ============================================================
+   WHY / STATS
+   ============================================================ */
+.why {
+  background: var(--ink); color: var(--bg);
+  padding: 96px 0;
+  position: relative; overflow: hidden;
+}
+.why::before {
+  content:""; position:absolute; top: 0; left: 0; right: 0; height: 8px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 40px, var(--ink) 40px 52px);
+}
+.why h2 { font-family:'Inter',sans-serif; font-size: 44px; letter-spacing: -0.02em; margin: 0 0 48px; max-width: 780px; line-height: 1.1; font-weight: 600;}
+.why h2 em { font-style: normal; color: var(--bg);}
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 32px; }
+.why-card .num { font-family:'Inter',sans-serif; font-size: 56px; line-height: 1; letter-spacing: -0.03em; color: var(--bg); font-weight: 600; display: block; margin-bottom: 14px;}
+.why-card .lbl { font-size: 13px; color: var(--bg); font-weight: 500; margin-bottom: 6px; }
+.why-card .desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.5;}
+
+/* standards strip */
+.standards {
+  padding: 28px 0; border-top: 1px solid rgba(255,255,255,.1);
+  margin-top: 72px;
+  display:flex; align-items:center; gap: 48px; flex-wrap: wrap;
+  justify-content: space-between;
+}
+.standards .lbl { color: rgba(255,255,255,.5); font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; }
+.standards .items { display:flex; gap: 36px; flex-wrap: wrap; }
+.standards .it {
+  display:flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,.85);
+}
+.standards .it i {
+  display:block; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  display:flex; align-items:center; justify-content:center;
+  font-family: 'Inter', sans-serif; font-style: normal; font-size: 11px;
+  color: var(--accent);
+}
+
+/* ============================================================
+   FACTORY / STORY BAND
+   ============================================================ */
+.story {
+  padding: 96px 0; background: var(--bg);
+  border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+}
+.story-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center;}
+.story h2 { font-family:'Inter',sans-serif; font-size: 40px; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 24px; font-weight: 600;}
+.story h2 em { font-style: normal; color: var(--ink);}
+.story p { font-size: 17px; line-height: 1.6; color: var(--ink-2); margin: 0 0 16px; max-width: 480px;}
+.story .sig {
+  margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line-soft);
+  display:flex; align-items: center; gap: 14px;
+}
+.story .sig .av { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-3); color: var(--ink); display:flex; align-items:center; justify-content: center; font-family:'Inter',sans-serif; font-size: 13px; font-weight: 600;}
+.story .sig b { font-size: 14px; display:block; }
+.story .sig span { font-size: 12px; color: var(--muted);}
+
+.story-visual {
+  position: relative; aspect-ratio: 5/4;
+  background: var(--bg-3); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-md);
+}
+.story-visual img { width: 100%; height: 100%; object-fit: cover; }
+.story-visual .badge {
+  position:absolute; top: 20px; left: 20px;
+  background: var(--accent); padding: 8px 14px;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink); border-radius: 4px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.story-visual .bl {
+  position:absolute; bottom: 20px; right: 20px;
+  background: var(--bg); padding: 14px 18px; border-radius: var(--radius);
+  display:flex; gap: 14px; align-items: center;
+  box-shadow: var(--shadow-md);
+}
+.story-visual .bl b { font-family:'Inter',sans-serif; font-size: 16px; letter-spacing: -0.005em; font-weight: 600;}
+.story-visual .bl span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;}
+
+/* ============================================================
+   CONTACT / FORM
+   ============================================================ */
+.contact { padding: 96px 0 80px; }
+.contact-head {
+  display:flex; justify-content: space-between; align-items: end; margin-bottom: 48px; gap: 32px;
+}
+.contact-head h2 { font-family:'Inter',sans-serif; font-size: 48px; letter-spacing: -0.025em; line-height: 1.05; margin: 0; font-weight: 600;}
+.contact-head h2 em { font-style: normal; color: var(--ink);}
+.contact-head .sub { color: var(--ink-2); font-size: 16px; line-height: 1.55; max-width: 360px; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; }
+
+/* left: channels */
+.channels { display:flex; flex-direction:column; gap: 14px;}
+.ch {
+  display:flex; gap: 18px; align-items: center;
+  padding: 22px 24px;
+  background: var(--bg); border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  transition: all .15s;
+  cursor: pointer;
+}
+.ch:hover { border-color: var(--ink); background: #fff; transform: translateX(2px); }
+.ch .ci {
+  width: 48px; height: 48px; border-radius: 12px;
+  display:flex; align-items:center; justify-content:center; flex-shrink: 0;
+  background: var(--bg-2); color: var(--ink);
+}
+.ch.wa .ci { background: var(--wa); color: #fff; }
+.ch.phone .ci { background: var(--accent); color: var(--bg);}
+.ch.email .ci { background: var(--accent); color: var(--ink); }
+.ch.pin .ci { background: var(--ink); color: var(--bg);}
+.ch .ci svg { width: 22px; height: 22px; }
+.ch .cb { flex: 1; }
+.ch .cb b { font-family:'Inter',sans-serif; font-size: 15px; letter-spacing: -0.005em; display:block; line-height: 1.3; font-weight: 600;}
+.ch .cb span { font-size: 13px; color: var(--muted); }
+.ch .cb .pfx { font-family:'Inter', sans-serif; font-size: 11px; color: var(--muted); margin-right: 4px;}
+.ch .arr { font-size: 20px; color: var(--muted); transition: all .15s; }
+.ch:hover .arr { color: var(--ink); transform: translateX(4px);}
+
+.hours {
+  margin-top: 10px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  padding: 18px 24px; border: 1px dashed var(--line-soft);
+  border-radius: var(--radius-lg);
+}
+.hours .h-item b { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); display:block; margin-bottom: 4px; }
+.hours .h-item span { font-size: 14px; color: var(--ink-2); }
+
+/* right: form */
+.form {
+  background: var(--bg); border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg); padding: 36px;
+  box-shadow: var(--shadow-sm);
+}
+.form h3 { font-family:'Inter',sans-serif; font-size: 18px; letter-spacing: -0.01em; margin: 0 0 6px; font-weight: 600;}
+.form p { font-size: 14px; color: var(--muted); margin: 0 0 24px; }
+.field { margin-bottom: 16px; }
+.field label {
+  display:block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin-bottom: 6px; font-weight: 500;
+}
+.field input, .field textarea, .field select {
+  width: 100%; padding: 12px 14px;
+  background: var(--bg-2); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); font: inherit; font-size: 14px;
+  transition: all .15s; color: var(--ink);
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: var(--ink); background: #fff;
+  box-shadow: 0 0 0 3px rgba(31,58,138,.08);
+}
+.field textarea { resize: vertical; min-height: 96px; font-family: inherit; }
+.field .row2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+.field .chips {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.field .chips .chip {
+  padding: 7px 12px; border-radius: 999px; background: var(--bg-2);
+  border: 1px solid var(--line-soft); font-size: 13px; color: var(--ink-2);
+  cursor: pointer; transition: all .15s;
+}
+.field .chips .chip:hover { border-color: var(--ink); color: var(--ink); }
+.field .chips .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink);}
+.form .actions { display: flex; gap: 10px; margin-top: 24px; }
+.form .actions .btn { flex: 1; justify-content: center; padding: 14px; }
+
+/* ============================================================
+   DEALERS MAP STRIP
+   ============================================================ */
+.dealers { padding: 80px 0; background: var(--bg); border-top: 1px solid var(--line-soft); }
+.dealers h2 { font-family:'Inter',sans-serif; font-size: 36px; letter-spacing: -0.02em; margin: 0 0 8px; font-weight: 600;}
+.dealers .sub { font-size: 15px; color: var(--ink-2); margin-bottom: 36px; max-width: 500px; }
+.dealer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.dealer {
+  padding: 22px 24px; background: var(--bg-2);
+  border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+  transition: all .15s; cursor: pointer;
+}
+.dealer:hover { border-color: var(--ink); transform: translateY(-2px); }
+.dealer .tag { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500;}
+.dealer b { font-family:'Inter',sans-serif; font-size: 20px; display:block; margin: 4px 0 10px; letter-spacing: -0.01em; font-weight: 600;}
+.dealer .addr { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 14px; }
+.dealer .ph { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--muted); padding-top: 14px; border-top: 1px dashed var(--line-soft);}
+.dealer.hq { background: var(--ink); color: var(--bg); border-color: var(--ink);}
+.dealer.hq .tag { color: rgba(255,255,255,.6);}
+.dealer.hq .addr { color: rgba(255,255,255,.8); }
+.dealer.hq .ph { color: rgba(255,255,255,.6); border-color: rgba(255,255,255,.2);}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--ink); color: rgba(255,255,255,.7);
+  padding: 64px 0 32px;
+}
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px;}
+.foot-grid h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--bg); margin: 0 0 18px; font-weight: 600;}
+.foot-grid a, .foot-grid span { display:block; font-size: 14px; line-height: 2; color: rgba(255,255,255,.6); }
+.foot-grid a:hover { color: var(--accent); }
+.foot-mark { display:flex; align-items: baseline; gap: 10px; margin-bottom: 18px;}
+.foot-mark .mark { width: 36px; height: 36px; border-radius: 6px; background: var(--bg); color: var(--ink); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size: 16px; font-weight: 600;}
+.foot-mark .word { font-family:'Inter',sans-serif; font-size: 18px; color: var(--bg); font-weight: 600;}
+.foot-brand p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,.55); margin: 0 0 20px; max-width: 380px; }
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px;
+  display:flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.4);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   FLOATING WHATSAPP
+   ============================================================ */
+.wa-fab {
+  position: fixed; right: 24px; bottom: 24px; z-index: 60;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--wa); color: #fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 8px 24px rgba(37,211,102,.4);
+  cursor: pointer; transition: all .2s;
+  border: none;
+}
+.wa-fab::before {
+  content:""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid #2563eb; opacity: 0.4; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%{transform:scale(1); opacity:.4;} 100% {transform:scale(1.4); opacity:0;}}
+.wa-fab:hover { transform: scale(1.08); background: var(--wa-dark); }
+.wa-fab svg { width: 28px; height: 28px; }
+
+/* ============================================================
+   PRODUCT MODAL
+   ============================================================ */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(17,22,31,.6);
+  backdrop-filter: blur(4px);
+  display:none; z-index: 100;
+  align-items:center; justify-content:center; padding: 40px;
+  animation: fadeIn .15s;
+}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;}}
+.modal-backdrop.show { display: flex; }
+.modal {
+  background: var(--bg); border-radius: var(--radius-lg);
+  max-width: 1040px; width: 100%; max-height: 90vh;
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: rise .2s ease;
+}
+@keyframes rise { from { transform: translateY(16px); opacity: 0;} to {transform:none; opacity:1;}}
+
+.m-img {
+  background: var(--bg-2); position: relative;
+  overflow: hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.m-img img { width: 100%; height: 100%; object-fit: cover; }
+.m-img .pill {
+  position:absolute; top: 18px; left: 18px;
+  background: var(--accent); padding: 6px 12px;
+  font-family:'Inter', sans-serif; font-size: 11px;
+  border-radius: 4px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+.m-info { padding: 40px; overflow-y: auto; position: relative; }
+.m-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-2); color: var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  border: 1px solid var(--line-soft); font-size: 18px; cursor: pointer;
+  transition: all .15s;
+}
+.m-close:hover { background: var(--ink); color: var(--bg);}
+.m-info .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-weight: 600;}
+.m-info h2 { font-family:'Inter',sans-serif; font-size: 24px; letter-spacing: -0.015em; line-height: 1.2; margin: 8px 0 16px; font-weight: 600;}
+.m-info .price { font-family:'Inter',sans-serif; font-size: 22px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 20px; color: var(--ink); font-weight: 600;}
+.m-info .price span { font-size: 12px; color: var(--muted); margin-left: 8px; }
+.m-info .desc { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 20px; }
+.m-info h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 16px 0 12px; font-weight: 600;}
+.m-info .specs { display:grid; grid-template-columns: auto 1fr; gap: 8px 20px; font-size: 14px; }
+.m-info .specs dt { color: var(--muted); }
+.m-info .specs dd { margin: 0; font-family:'Inter', sans-serif; font-size: 13px; color: var(--ink);}
+.m-info .m-actions { display:flex; gap: 10px; margin-top: 28px; }
+.m-info .m-actions .btn { flex: 1; justify-content: center; padding: 14px; }
+
+/* ============================================================
+   RESPONSIVE — tablet & mobile
+   ============================================================ */
+@media (max-width: 1100px) {
+  :root { --maxw: 100%; }
+  .container { padding: 0 24px; }
+  .grid { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
+  .dealer-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 32px;}
+  .hero h1 { font-size: 52px; }
+  .foot-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+  .foot-grid > div:nth-child(4) { grid-column: span 3;}
+}
+
+/* TABLET */
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .hamburger { display: none; }
+  .nav-cta .btn:first-child { display: none; }
+  .nav-cta .btn { padding: 10px 12px; font-size: 0; gap: 0; }
+  .nav-cta .btn svg { width: 18px; height: 18px; margin: 0; }
+  .nav-cta { gap: 8px; }
+  .nav-inner { padding: 14px 20px; }
+  .hero { padding: 40px 0 32px;}
+  .hero-grid { grid-template-columns: 1fr; gap: 32px;}
+  .hero h1 { font-size: 44px; line-height: 1.05;}
+  .hero .lede { font-size: 16px; max-width: 100%;}
+  .hero-actions .btn { flex: 1; justify-content: center; }
+  .hero-meta { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 100%;}
+  .hero-meta .m b { font-size: 22px;}
+  .hero-feat { aspect-ratio: 4/3; max-width: 460px; margin: 0 auto;}
+  .section { padding: 50px 0;}
+  .section-head { flex-direction: column; align-items: flex-start; gap: 16px;}
+  .section-head h2 { font-size: 32px;}
+  .section-head .sub { max-width: 100%;}
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 28px 16px;}
+  .why { padding: 64px 0;}
+  .why h2 { font-size: 32px; margin-bottom: 32px;}
+  .why-card .num { font-size: 44px;}
+  .standards { flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 48px;}
+  .standards .items { gap: 18px 24px;}
+  .story { padding: 64px 0;}
+  .story-grid { grid-template-columns: 1fr; gap: 32px;}
+  .story h2 { font-size: 32px;}
+  .story p { font-size: 15px; max-width: 100%;}
+  .story-visual { aspect-ratio: 4/3;}
+  .contact { padding: 64px 0;}
+  .contact-head { flex-direction: column; align-items: flex-start; gap: 16px;}
+  .contact-head h2 { font-size: 36px;}
+  .contact-grid { grid-template-columns: 1fr; gap: 28px;}
+  .form { padding: 24px;}
+  .field .row2 { grid-template-columns: 1fr; gap: 16px;}
+  .form .actions { flex-direction: column; gap: 8px;}
+  .dealers { padding: 56px 0;}
+  .dealers h2 { font-size: 28px;}
+  footer { padding: 48px 0 24px;}
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 36px;}
+  .foot-grid > div:nth-child(4) { grid-column: span 2;}
+  .foot-bottom { flex-direction: column; gap: 8px;}
+  /* Modal — fullscreen on mobile */
+  .modal-backdrop { padding: 0; align-items: stretch;}
+  .modal { grid-template-columns: 1fr; max-height: 100vh; height: 100vh; border-radius: 0; overflow-y: auto;}
+  .m-img { aspect-ratio: 4/3; }
+  .m-info { padding: 24px;}
+}
+
+/* PHONE */
+@media (max-width: 540px) {
+  .container { padding: 0 16px;}
+  .nav-inner { padding: 14px 16px;}
+  .logo .word { font-size: 15px;}
+  .logo .tag { display: none;}
+  .nav-cta .btn { padding: 8px 12px; font-size: 13px;}
+  .hero { padding: 32px 0 24px;}
+  .hero h1 { font-size: 36px; margin-bottom: 16px;}
+  .eyebrow { margin-bottom: 16px; font-size: 11px;}
+  .hero-actions { gap: 8px; margin-bottom: 32px;}
+  .hero-actions .btn { padding: 12px 16px; font-size: 14px;}
+  .hero-feat .stripe { font-size: 9px; padding: 0 12px;}
+  .hero-feat .stripe span:nth-child(2) { display: none;}
+  .hero-feat .caption { padding: 12px; left: 12px; right: 12px; bottom: 12px;}
+  .hero-feat .caption .name { font-size: 14px;}
+  .hero-feat .caption .price { font-size: 12px;}
+  .hero-feat .caption .price b { font-size: 14px;}
+  .ticker-inner { gap: 28px; font-size: 12px;}
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 20px 12px;}
+  .p .info .name { font-size: 13px;}
+  .p .info .cat { font-size: 10px;}
+  .p .info .price { font-size: 12px;}
+  .cat-row { gap: 4px;}
+  .cat-chip { padding: 6px 10px; font-size: 12px;}
+  .why h2 { font-size: 28px;}
+  .why-grid { grid-template-columns: 1fr; gap: 32px;}
+  .why-card .num { font-size: 40px;}
+  .story h2 { font-size: 28px;}
+  .contact-head h2 { font-size: 28px;}
+  .ch { padding: 16px; gap: 14px;}
+  .ch .ci { width: 40px; height: 40px;}
+  .ch .cb b { font-size: 14px;}
+  .hours { grid-template-columns: 1fr; gap: 14px; padding: 14px 16px;}
+  .form h3 { font-size: 16px;}
+  .dealer-grid { grid-template-columns: 1fr;}
+  .foot-grid { grid-template-columns: 1fr; gap: 24px;}
+  .foot-grid > div:nth-child(4) { grid-column: auto;}
+  .wa-fab { width: 52px; height: 52px; right: 16px; bottom: 16px;}
+  .wa-fab svg { width: 24px; height: 24px;}
+  .m-info { padding: 20px;}
+  .m-info h2 { font-size: 20px;}
+  .m-info .price { font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="logo">
+      <div class="mark"><img src="https://5.imimg.com/data5/SELLER/Logo/2025/12/568256674/DY/UM/OM/190502498/kh-logo-250x250.png" alt="Kanishka" /></div>
+      <div>
+        <div class="word">KH Infra Equipment</div>
+      </div>
+    </div>
+
+    <div class="nav-cta">
+      <a class="btn primary" href="tel:+917942716283" aria-label="Call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 20 20 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+        <span>Call now</span>
+      </a>
+      <a class="btn wa" href="https://wa.me/917942716283" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16"><path d="M16.001 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.354.617 4.65 1.787 6.677L2.667 29.333l6.83-1.762A13.31 13.31 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333S23.364 2.667 16.001 2.667zm0 24.444a11.07 11.07 0 0 1-5.643-1.541l-.405-.24-4.045 1.043 1.077-3.94-.264-.42a11.063 11.063 0 0 1-1.69-5.913c0-6.122 4.978-11.1 11.099-11.1 2.964 0 5.752 1.155 7.85 3.252a11.024 11.024 0 0 1 3.249 7.85c-.002 6.122-4.98 11.099-11.228 11.099zm6.082-8.305c-.333-.167-1.974-.974-2.28-1.085-.305-.111-.527-.167-.749.167-.222.333-.86 1.085-1.054 1.307-.194.222-.388.25-.722.083-.333-.166-1.408-.519-2.682-1.654-.991-.884-1.66-1.977-1.854-2.31-.194-.333-.02-.514.146-.68.15-.149.333-.388.5-.582.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.582-.083-.166-.749-1.806-1.026-2.473-.27-.65-.545-.563-.749-.572l-.638-.011a1.225 1.225 0 0 0-.888.416c-.305.333-1.165 1.139-1.165 2.778s1.193 3.222 1.36 3.444c.166.222 2.347 3.583 5.685 5.024.795.343 1.415.548 1.898.7.798.254 1.524.218 2.097.132.64-.095 1.974-.806 2.252-1.585.278-.778.278-1.444.194-1.585-.083-.139-.305-.222-.638-.388z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <button class="hamburger" onclick="document.getElementById('mm').classList.add('open')" aria-label="Menu" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mm">
+  <div class="mm-head">
+    <div class="logo"><div class="mark"><img src="https://5.imimg.com/data5/SELLER/Logo/2025/12/568256674/DY/UM/OM/190502498/kh-logo-250x250.png" alt="Kanishka" /></div><div class="word">KH Infra</div></div>
+    <button class="mm-close" onclick="document.getElementById('mm').classList.remove('open')" aria-label="Close">×</button>
+  </div>
+  <div class="mm-links">
+    <a href="#catalog" onclick="document.getElementById('mm').classList.remove('open')">Catalog</a>
+    <a href="#story" onclick="document.getElementById('mm').classList.remove('open')">Manufacturing</a>
+    <a href="#dealers" onclick="document.getElementById('mm').classList.remove('open')">Dealers</a>
+    <a href="#contact" onclick="document.getElementById('mm').classList.remove('open')">Contact</a>
+  </div>
+  <div class="mm-cta">
+    <a class="btn primary" href="#contact" onclick="document.getElementById('mm').classList.remove('open')">Request quote</a>
+    <a class="btn wa" href="https://wa.me/917942716283" target="_blank">WhatsApp Us</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <b>Manufacturer since 2009</b>
+      </div>
+      <h1>
+        Built for India's <em>Builders.</em>
+      </h1>
+      <p class="lede">Pan-India shipping with after-sales support and services. </p>
+      <div class="hero-actions">
+        <a href="#catalog" class="btn primary lg">
+          View catalogue
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/917942716283" target="_blank" class="btn wa lg">
+          <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16"><path d="M16.001 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.354.617 4.65 1.787 6.677L2.667 29.333l6.83-1.762A13.31 13.31 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333S23.364 2.667 16.001 2.667zm0 24.444a11.07 11.07 0 0 1-5.643-1.541l-.405-.24-4.045 1.043 1.077-3.94-.264-.42a11.063 11.063 0 0 1-1.69-5.913c0-6.122 4.978-11.1 11.099-11.1 2.964 0 5.752 1.155 7.85 3.252a11.024 11.024 0 0 1 3.249 7.85c-.002 6.122-4.98 11.099-11.228 11.099zm6.082-8.305c-.333-.167-1.974-.974-2.28-1.085-.305-.111-.527-.167-.749.167-.222.333-.86 1.085-1.054 1.307-.194.222-.388.25-.722.083-.333-.166-1.408-.519-2.682-1.654-.991-.884-1.66-1.977-1.854-2.31-.194-.333-.02-.514.146-.68.15-.149.333-.388.5-.582.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.582-.083-.166-.749-1.806-1.026-2.473-.27-.65-.545-.563-.749-.572l-.638-.011a1.225 1.225 0 0 0-.888.416c-.305.333-1.165 1.139-1.165 2.778s1.193 3.222 1.36 3.444c.166.222 2.347 3.583 5.685 5.024.795.343 1.415.548 1.898.7.798.254 1.524.218 2.097.132.64-.095 1.974-.806 2.252-1.585.278-.778.278-1.444.194-1.585-.083-.139-.305-.222-.638-.388z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-meta" style="display:none;">
+        <div class="m"><b>17</b><span>YRS IN OPERATION</span></div>
+        <div class="m"><b>12,400+</b><span>Units delivered</span></div>
+        <div class="m"><b>28</b><span>States supplied</span></div>
+      </div>
+    </div>
+
+    <div class="hero-feat">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/354593322/YA/WW/SN/190502498/hydraulic-hopper-concrete-mixer-500x500.jpg" alt="KH Infra factory floor with concrete mixers and equipment" />
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <!-- filled by JS (duplicated for infinite scroll) -->
+  </div>
+</div>
+
+<!-- CATALOG -->
+<section class="section" id="catalog">
+  <div class="container">
+    <div class="section-head">
+      <h2>Our products</h2>
+      <div class="sub">
+</div>
+    </div>
+
+    <div class="cat-row" id="cats"></div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="container">
+    <h2>Engineered for daily site operation.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="num">17</span>
+        <div class="lbl">Years in operation</div>
+        <div class="desc">Continuous manufacturing operations since 2009 from our Jaipur facility.</div>
+      </div>
+      <div class="why-card">
+        <span class="num">12k+</span>
+        <div class="lbl">Units delivered</div>
+        <div class="desc">Every machine is run-tested in our yard before it leaves Jaipur. From Kashmir to Kerala — we've shipped to all of it.</div>
+      </div>
+      <div class="why-card">
+        <span class="num">48h</span>
+        <div class="lbl">Quotation turnaround</div>
+        <div class="desc">Drop us a WhatsApp and you'll usually hear back the same day. Email enquiries get a reply by the next working day.</div>
+      </div>
+      <div class="why-card">
+        <span class="num">12mo</span>
+        <div class="lbl">Standard warranty</div>
+        <div class="desc">Twelve months on the frame and the wiring. If something goes wrong, we'll come and fix it on-site.</div>
+      </div>
+    </div>
+    <div class="standards">
+      <span class="lbl">Compliance & registrations</span>
+      <div class="items">
+        <div class="it"><i>I</i>ISO 9001:2015</div>
+        <div class="it"><i>C</i>CE Marked</div>
+        <div class="it"><i>B</i>BIS Approved</div>
+        <div class="it"><i>M</i>MSME Registered</div>
+        <div class="it"><i>G</i>GST Verified Manufacturer</div>
+        <div class="it"><i>E</i>IEC Exports Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY removed -->
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-head">
+      <h2>Reach out to us</h2>
+    </div>
+    <div class="contact-grid">
+      <!-- channels -->
+      <div class="channels">
+        <a class="ch wa" href="https://wa.me/917942716283" target="_blank" rel="noopener">
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.8 17l-1.3 4.7 4.8-1.3a10.5 10.5 0 0 0 15.8-9.1c0-2.8-1.1-5.4-3-7.4z"/></svg>
+          </div>
+          <div class="cb">
+            <b>WhatsApp</b>
+          </div>
+          <span class="arr">→</span>
+        </a>
+        <a class="ch phone" href="tel:+917942716283">
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 20 20 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2-.5c1 .3 1.9.5 2.9.7A2 2 0 0 1 22 17z"/></svg>
+          </div>
+          <div class="cb">
+            <b>Call at +91 794 271 6283</b>
+          </div>
+          <span class="arr">→</span>
+        </a>
+        <a class="ch email" href="mailto:sales@khinfra.in" style="display:none">
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </div>
+          <div class="cb">
+            <b>sales@khinfra.in</b>
+            <span><span class="pfx">EMAIL</span>Reply within one business day</span>
+          </div>
+          <span class="arr">→</span>
+        </a>
+        <a class="ch pin" href="https://maps.app.goo.gl/HFTsFfnXqTJ4pwSG7" target="_blank" rel="noopener">
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="cb">
+            <b>Visit our office</b>
+          </div>
+          <span class="arr">→</span>
+        </a>
+
+      </div>
+
+      <!-- form -->
+      <form class="form" id="enquiryForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms access key -->
+        <input type="hidden" name="access_key" value="fdf10c8e-81ef-4f46-ad2b-80e7cf3728a7" />
+        <input type="hidden" name="subject" value="New Enquiry — KH Infra Equipment" />
+        <input type="hidden" name="from_name" value="KH Infra Website" />
+        <!-- honeypot spam protection -->
+        <input type="checkbox" name="botcheck" style="display:none" />
+        <!-- selected product categories, filled by JS -->
+        <input type="hidden" name="product_categories" id="hiddenCats" value="" />
+
+        <h3>Send an enquiry</h3>
+        <p>Provide your requirements below. Our sales team will respond with pricing, availability and delivery terms.</p>
+        <div class="field">
+          <label>Full name</label>
+          <input type="text" name="name" placeholder="Rajesh Kumar" required />
+        </div>
+        <div class="field">
+          <div class="row2">
+            <div>
+              <label>Phone / WhatsApp</label>
+              <input type="tel" name="phone" placeholder="+91 9XXXX XXXXX" required />
+            </div>
+
+          </div>
+        </div>
+        <div class="field">
+          <label>Product category</label>
+          <div class="chips" id="chips">
+            <span class="chip" data-cat="Concrete Mixer">Concrete Mixer</span>
+            <span class="chip" data-cat="Bar Cutting">Bar Cutting</span>
+            <span class="chip" data-cat="Bar Bending">Bar Bending</span>
+            <span class="chip" data-cat="Tower Hoist">Tower Hoist</span>
+            <span class="chip" data-cat="Monkey Crane">Monkey Crane</span>
+            <span class="chip" data-cat="Vibrator">Vibrator</span>
+            <span class="chip" data-cat="Other">Other</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Requirements</label>
+          <textarea name="requirements" placeholder="Please specify product, quantity, delivery location and timeline."></textarea>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn primary">Submit enquiry</button>
+          <button type="button" class="btn wa" onclick="sendWA()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.8 17l-1.3 4.7 4.8-1.3a10.5 10.5 0 0 0 15.8-9.1c0-2.8-1.1-5.4-3-7.4z"/></svg>
+            Send via WhatsApp
+          </button>
+        </div>
+        <div id="formMsg" style="display:none; margin-top:12px; padding:12px; border-radius:6px; font-size:14px; text-align:center;"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- DEALERS section removed -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-mark">
+          <div class="mark"><img src="https://5.imimg.com/data5/SELLER/Logo/2025/12/568256674/DY/UM/OM/190502498/kh-logo-250x250.png" alt="Kanishka" /></div>
+          <div class="word">KH Infra</div>
+        </div>
+        <p>KH Infra Equipment is an Indian manufacturer of concrete mixers, bar processing machinery, hoists, vibrators and allied construction equipment. Operating from Jaipur since 2009.</p>
+        <a href="https://wa.me/917942716283" class="btn wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.8 17l-1.3 4.7 4.8-1.3a10.5 10.5 0 0 0 15.8-9.1c0-2.8-1.1-5.4-3-7.4z"/></svg>
+          +91 794 271 6283
+        </a>
+      </div>
+      <div>
+        <h4>Catalog</h4>
+        <a href="#catalog">Concrete Mixer</a>
+        <a href="#catalog">Bar Cutting</a>
+        <a href="#catalog">Bar Bending</a>
+        <a href="#catalog">Tower Hoist</a>
+        <a href="#catalog">Monkey Crane</a>
+        <a href="#catalog">All machines</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#why">About KH Infra</a>
+        <a href="#why">Manufacturing</a>
+        <a href="#contact">Dealers</a>
+        <a href="#">Exports</a>
+        <a href="#">Press & media</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <span>Jaipur – 302022</span>
+        <span>Rajasthan, India</span>
+        <a href="tel:+917942716283">+91 794 271 6283</a>
+        <a href="mailto:sales@khinfra.in">sales@khinfra.in</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 KH Infra Equipment · Made in India</span>
+      <span>ISO 9001:2015 · CE · BIS · MSME · GST verified</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CALL FAB -->
+<a href="tel:+917942716283" class="wa-fab" aria-label="Call" style="background: #0a0a0a;">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 20 20 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+</a>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="m-img">
+      <div class="pill" id="mCat">Concrete Mixer</div>
+      <img id="mImg" alt="" />
+    </div>
+    <div class="m-info">
+      <button class="m-close" onclick="closeModal()">×</button>
+      <div class="cat" id="mCat2">Concrete Mixer</div>
+      <h2 id="mName">Bar Bending Machine GW42</h2>
+      <div class="price" style="font-size: 36px;">₹ <span id="mPrice">66,000</span></div>
+      <div class="desc" id="mDesc" style="display:none">spatch.</div>
+
+      <h4>Specifications</h4>
+      <dl class="specs" id="mSpecs"></dl>
+
+      <h4 style="display:none">Includes</h4>
+      <div style="display:none; font-size:13px; color: var(--ink-2); line-height: 1.7;">
+        Factory commissioning guide · 12-month warranty · technical support · GST invoice
+      </div>
+
+      <div class="m-actions">
+        <button class="btn wa" onclick="waProduct()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10.5 10.5 0 0 0 3.8 17l-1.3 4.7 4.8-1.3a10.5 10.5 0 0 0 15.8-9.1c0-2.8-1.1-5.4-3-7.4z"/></svg>
+          WhatsApp us
+        </button>
+        <a class="btn primary" href="tel:+917942716283" style="flex:1; justify-content:center; padding:14px;">Call now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   PRODUCT DATA — with REAL imimg.com CDN image URLs from KH Infra's
+   IndiaMART listing. `-125x125` → `-500x500` for hi-res.
+   ============================================================ */
+const IMG = (path) => `https://5.imimg.com/data5/${path}-500x500.${path.endsWith('png') ? 'png' : 'jpeg'}`;
+
+// actually, URLs in the data are mixed .png/.jpeg — keep the full path per product
+const PRODUCTS = [
+  // --- Bar Bending (2)
+  { n: "Bar Bending Machine GW42", c: "Bar Bending", p: "66,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568303261/QF/ZG/AP/190502498/bar-bending-machine-gw42-500x500.png",
+    specs: { Capacity: "42Ø mm", Power: "4 kW / 5.5 HP", Phase: "3-phase", Weight: "~380 kg", Warranty: "12 months" } },
+  { n: "Industrial Bar Bending Machine", c: "Bar Bending", p: "90,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605652750/BC/HG/HY/190502498/industrial-bar-bending-machine-500x500.png",
+    specs: { Capacity: "50Ø mm", Power: "5.5 kW", Phase: "3-phase", Weight: "~520 kg", Warranty: "12 months" } },
+
+  // --- Bar Cutting (4)
+  { n: "Concrete Cutter", c: "Bar Cutting", p: "1,40,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568585134/ZU/AZ/XH/190502498/concrete-cutter-500x500.png",
+    specs: { "Cut depth": "180 mm", Engine: "Diesel 9 HP", Blade: "450 mm Ø", Weight: "145 kg", Warranty: "12 months" } },
+  { n: "Bar Cutting Machine \nGQ 40", c: "Bar Cutting", p: "63,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/10/551730980/PB/AA/TN/190502498/bar-cutting-machine-g-q-40-500x500.jpeg",
+    specs: { Capacity: "40Ø mm", Power: "3 kW / 4 HP", Phase: "3-phase", Weight: "~410 kg", Warranty: "12 months" } },
+  { n: "Bar Cutting Machine \nGQ 42", c: "Bar Cutting", p: "66,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/10/551739165/TC/IA/CQ/190502498/bar-cutting-machine-gq-42-500x500.jpeg",
+    specs: { Capacity: "42Ø mm", Power: "4 kW / 5.5 HP", Phase: "3-phase", Weight: "~450 kg", Warranty: "12 months" } },
+  { n: "Heavy Duty Bar Shear", c: "Bar Cutting", p: "78,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/10/551730980/PB/AA/TN/190502498/bar-cutting-machine-g-q-40-500x500.jpeg",
+    specs: { Capacity: "45Ø mm", Power: "5.5 kW", Phase: "3-phase", Weight: "~480 kg", Warranty: "12 months" } },
+
+  // --- Concrete Mixer (7)
+  { n: "Concrete Mixer Hyd Hopper", c: "Concrete Mixer", p: "1,60,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568301613/TS/RX/ND/190502498/concrete-mixer-hyd-hopper-500x500.png",
+    specs: { Capacity: "10/7 cuft", Engine: "Diesel / Elec 7.5 HP", "Drum speed": "18–22 RPM", Weight: "~680 kg", Warranty: "12 months" } },
+  { n: "Monkey Hoist Mini Crane 1Ph", c: "Concrete Mixer", p: "69,999",
+    img: "https://5.imimg.com/data5/ANDROID/Default/2025/4/505580046/IP/YU/SZ/190502498/product-jpeg-500x500.jpg",
+    specs: { Capacity: "300 kg", Power: "1.5 kW / 1-phase", Height: "up to 18 m", Weight: "~220 kg", Warranty: "12 months" } },
+  { n: "Monkey Hoist", c: "Concrete Mixer", p: "1,05,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605968515/MB/QP/QP/190502498/monkey-hoist-150-kgs-with-out-trolley-500x500.png",
+    specs: { Capacity: "500 kg", Power: "3 kW / 3-phase", Height: "up to 22 m", Weight: "~310 kg", Warranty: "12 months" } },
+  { n: "Concrete Mixture Machine", c: "Concrete Mixer", p: "2,50,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605954635/RG/PQ/ZC/190502498/2-pole-concrete-mixture-machine-65-feet-height-12-hp-engine-500x500.png",
+    specs: { Capacity: "12/8 cuft", Engine: "Diesel 10 HP", "Drum speed": "20 RPM", Weight: "~820 kg", Warranty: "12 months" } },
+  { n: "Twin Screw Mixer", c: "Concrete Mixer", p: "1,50,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354816714/IH/NV/DP/190502498/twin-screw-mixer-500x500.jpg",
+    specs: { Capacity: "500 L", Power: "7.5 kW", Phase: "3-phase", Weight: "~640 kg", Warranty: "12 months" } },
+  { n: "Concrete Mixer Machine", c: "Concrete Mixer", p: "99,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605666807/QL/MA/QU/190502498/1-5-2-bag-concrete-mixer-with-3-hp-3-phase-motor-500x500.png",
+    specs: { Capacity: "8/5 cuft", Engine: "Elec 5 HP", "Drum speed": "22 RPM", Weight: "~420 kg", Warranty: "12 months" } },
+  { n: "One Bag Reversible Mixer", c: "Concrete Mixer", p: "1,85,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605666807/QL/MA/QU/190502498/1-5-2-bag-concrete-mixer-with-3-hp-3-phase-motor-500x500.png",
+    specs: { Capacity: "10/7 cuft reversible", Engine: "Diesel 8 HP", "Drum speed": "20 RPM", Weight: "~720 kg", Warranty: "12 months" } },
+
+  // --- Construction Equipment (11) - 9 slots to round to 41 total
+  { n: "Concrete Groove Cutter", c: "Construction Equipment", p: "50,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568583883/PB/EW/CE/190502498/concrete-groove-cutter-500x500.png",
+    specs: { "Blade Ø": "350 mm", Engine: "Petrol 5.5 HP", "Cut depth": "100 mm", Weight: "95 kg", Warranty: "12 months" } },
+  { n: "Industrial Power Floaters", c: "Construction Equipment", p: "50,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354592971/ZC/MU/WE/190502498/industrial-power-floaters-500x500.jpg",
+    specs: { "Blade Ø": "915 mm", Engine: "Petrol 5.5 HP", Speed: "40–140 RPM", Weight: "78 kg", Warranty: "12 months" } },
+  { n: "Rotary Sand Screening Machine", c: "Construction Equipment", p: "35,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354592668/NL/NX/JO/190502498/rotary-sand-screening-machine-500x500.jpeg",
+    specs: { Capacity: "8 m³/hr", Power: "2 HP", Mesh: "configurable", Weight: "140 kg", Warranty: "12 months" } },
+  { n: "Concrete Mixing Bucket 0.75", c: "Construction Equipment", p: "40,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568287836/UY/SG/LZ/190502498/concrete-mixing-bucket-500x500.png",
+    specs: { Capacity: "0.75 cum", Type: "Double rack / double steering", Weight: "~180 kg", Warranty: "6 months" } },
+  { n: "Banana Concrete Bucket \n1 Cum", c: "Construction Equipment", p: "47,999",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/4/597064476/BN/NN/LG/190502498/banana-concrete-bucket-1-cum-500x500.jpeg",
+    specs: { Capacity: "1 cum", Type: "Banana / side-discharge", Weight: "~220 kg", Warranty: "6 months" } },
+  { n: "Concrete Bucket Double Rack 500L", c: "Construction Equipment", p: "27,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568287206/VU/YC/VB/190502498/concreate-bucket-500x500.png",
+    specs: { Capacity: "500 L", Type: "Double rack / double steering", Weight: "~150 kg", Warranty: "6 months" } },
+  { n: "Stairway Aluminium Scaffolding", c: "Construction Equipment", p: "1,20,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png",
+    specs: { Height: "up to 12 m", Material: "Aluminium", "Load cap.": "200 kg/level", Weight: "~45 kg/section", Warranty: "24 months" } },
+  { n: "Aardwolf Quick Lift Platform", c: "Construction Equipment", p: "2,40,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png",
+    specs: { Height: "up to 15 m", Type: "Powered scaffold", "Load cap.": "500 kg", Weight: "~320 kg", Warranty: "12 months" } },
+  { n: "Site Safety Lighting Tower", c: "Construction Equipment", p: "95,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354798916/QB/CT/CH/190502498/tower-hoist-lift-500x500.jpg",
+    specs: { Height: "9 m", "Lamps": "4 × 1000 W", Engine: "Diesel gen-set", Weight: "~650 kg", Warranty: "12 months" } },
+  { n: "Manual Paver Block Machine", c: "Construction Equipment", p: "1,10,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605954635/RG/PQ/ZC/190502498/2-pole-concrete-mixture-machine-65-feet-height-12-hp-engine-500x500.png",
+    specs: { Output: "~200 blocks/hr", Type: "Manual/vibro", Moulds: "interchangeable", Weight: "~310 kg", Warranty: "12 months" } },
+  { n: "Dust Extractor Unit", c: "Construction Equipment", p: "58,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354592668/NL/NX/JO/190502498/rotary-sand-screening-machine-500x500.jpeg",
+    specs: { Airflow: "1500 m³/hr", Power: "2.2 kW", Filter: "HEPA + bag", Weight: "~95 kg", Warranty: "12 months" } },
+
+  // --- Monkey Crane (4)
+  { n: "Monkey Hoist 150 Kgs No Trolley", c: "Monkey Crane", p: "33,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605968515/MB/QP/QP/190502498/monkey-hoist-150-kgs-with-out-trolley-500x500.png",
+    specs: { Capacity: "150 kg", Power: "0.75 kW / 1-phase", Height: "up to 15 m", Weight: "~60 kg", Warranty: "12 months" } },
+  { n: "Monkey Lift 500 Kgs Capacity", c: "Monkey Crane", p: "1,10,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605963159/IQ/XB/DU/190502498/monkey-lift-500-kgs-capacity-500x500.png",
+    specs: { Capacity: "500 kg", Power: "3 kW / 3-phase", Height: "up to 25 m", Weight: "~340 kg", Warranty: "12 months" } },
+  { n: "Monkey Hoist Crane 400 kg", c: "Monkey Crane", p: "86,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605960620/EJ/KO/WQ/190502498/monkey-crane-300kg-panjab-model-500x500.png",
+    specs: { Capacity: "400 kg", Power: "2.2 kW / 3-phase", Height: "up to 22 m", Weight: "~280 kg", Warranty: "12 months" } },
+  { n: "Mini Monkey Hoist 100kg", c: "Monkey Crane", p: "26,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605968515/MB/QP/QP/190502498/monkey-hoist-150-kgs-with-out-trolley-500x500.png",
+    specs: { Capacity: "100 kg", Power: "0.5 kW / 1-phase", Height: "up to 12 m", Weight: "~42 kg", Warranty: "12 months" } },
+
+  // --- Tower Hoist (4)
+  { n: "Monkey Lift Crane", c: "Tower Hoist", p: "85,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/10/551114963/VE/EL/KT/190502498/monkey-lift-crane-500x500.jpeg",
+    specs: { Capacity: "300 kg", Power: "2.2 kW", Height: "up to 20 m", Weight: "~250 kg", Warranty: "12 months" } },
+  { n: "Tower Hoist Lift", c: "Tower Hoist", p: "3,60,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354798916/QB/CT/CH/190502498/tower-hoist-lift-500x500.jpg",
+    specs: { Capacity: "500 kg", Power: "5.5 kW", Height: "up to 40 m", Weight: "~1200 kg", Warranty: "12 months" } },
+  { n: "Construction Tower Hoist", c: "Tower Hoist", p: "4,40,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354800280/CR/CI/NT/190502498/construction-tower-hoist-500x500.jpg",
+    specs: { Capacity: "800 kg", Power: "7.5 kW", Height: "up to 50 m", Weight: "~1580 kg", Warranty: "12 months" } },
+  { n: "Builder's Material Hoist", c: "Tower Hoist", p: "2,80,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354800280/CR/CI/NT/190502498/construction-tower-hoist-500x500.jpg",
+    specs: { Capacity: "400 kg", Power: "4 kW", Height: "up to 30 m", Weight: "~980 kg", Warranty: "12 months" } },
+
+  // --- Vibrator (5)
+  { n: "Concrete Vibrator Table", c: "Vibrator", p: "55,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354631624/LQ/SH/BE/190502498/concrete-table-vibrator-500x500.jpg",
+    specs: { "Table size": "4'×4'", Power: "1.5 kW", Frequency: "2800 VPM", Weight: "~180 kg", Warranty: "12 months" } },
+  { n: "Walk Behind Double Drum Roller", c: "Vibrator", p: "1,65,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/5/515300761/OT/LV/TD/190502498/whatsapp-image-2025-05-31-at-19-51-20-500x500.jpeg",
+    specs: { "Drum width": "600 mm", Engine: "Petrol 5.5 HP", Frequency: "3500 VPM", Weight: "~540 kg", Warranty: "12 months" } },
+  { n: "Surface Plate Vibrator", c: "Vibrator", p: "48,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354626093/MT/AG/YR/190502498/surface-plate-vibrator-500x500.jpg",
+    specs: { "Plate size": "500×600 mm", Engine: "Petrol 5.5 HP", Frequency: "5500 VPM", Weight: "~95 kg", Warranty: "12 months" } },
+  { n: "Earth Rammer Compactor", c: "Vibrator", p: "62,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354626093/MT/AG/YR/190502498/surface-plate-vibrator-500x500.jpg",
+    specs: { Type: "Tamping rammer", Engine: "Petrol 4 HP", Frequency: "700 BPM", Weight: "~78 kg", Warranty: "12 months" } },
+  { n: "Needle Vibrator Flex Shaft", c: "Vibrator", p: "22,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354626093/MT/AG/YR/190502498/surface-plate-vibrator-500x500.jpg",
+    specs: { "Shaft length": "6 m", "Needle Ø": "40/60 mm", Power: "1.5 kW", Weight: "~25 kg", Warranty: "12 months" } },
+
+  // --- Suspended Platform (2)
+  { n: "Suspended Platform", c: "Suspended Platform", p: "1,80,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png",
+    specs: { "Platform size": "6 m", Capacity: "630 kg", Motor: "LTD 8.0", Weight: "~480 kg", Warranty: "12 months" } },
+  { n: "Scrap Straightening Machine", c: "Suspended Platform", p: "1,40,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/5/515311354/CB/WA/DK/190502498/scrap-straightening-machine-500x500.jpeg",
+    specs: { Capacity: "6–16 mm", Power: "5.5 kW", "Feed speed": "10 m/min", Weight: "~520 kg", Warranty: "12 months" } },
+  { n: "Rope Suspended Cradle 4m", c: "Suspended Platform", p: "1,60,000",
+    img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png",
+    specs: { "Platform size": "4 m", Capacity: "500 kg", Motor: "LTD 6.3", Weight: "~380 kg", Warranty: "12 months" } },
+];
+
+/* ============================================================
+   RENDER — categories, grid, ticker
+   ============================================================ */
+const CATS = [
+  { k: "All", n: PRODUCTS.length },
+  ...Array.from(new Set(PRODUCTS.map(p => p.c))).map(c => ({ k: c, n: PRODUCTS.filter(p => p.c === c).length }))
+];
+let activeCat = "All";
+
+function renderCats() {
+  const el = document.getElementById('cats');
+  el.innerHTML = CATS.map(c => `
+    <button class="cat-chip ${c.k === activeCat ? 'on' : ''}" data-cat="${c.k}">
+      ${c.k} <span class="n">${c.n}</span>
+    </button>
+  `).join('');
+  el.querySelectorAll('.cat-chip').forEach(b => {
+    b.addEventListener('click', () => {
+      activeCat = b.dataset.cat; renderCats(); renderGrid();
+    });
+  });
+}
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  const list = activeCat === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.c === activeCat);
+  grid.innerHTML = list.map((p, i) => `
+    <article class="p" data-idx="${PRODUCTS.indexOf(p)}">
+      <div class="ph">
+        <span class="tr">↗</span>
+        <img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.style.background='var(--bg-3)'" />
+      </div>
+      <div class="info">
+        <div class="row">
+          <div class="name">${p.n}</div>
+          <span class="price">₹${p.p}</span>
+        </div>
+      </div>
+    </article>
+  `).join('');
+  grid.querySelectorAll('.p').forEach(el => {
+    el.addEventListener('click', () => openModal(PRODUCTS[+el.dataset.idx]));
+  });
+}
+function renderTicker() {
+  const bits = [
+    '<span><i></i>ISO 9001:2015</span>',
+    '<span><i></i>CE Marked</span>',
+    '<span><i></i>BIS Approved</span>',
+    '<span><i></i>Made in India</span>',
+    '<span><i></i>GST Verified Manufacturer</span>',
+    '<span><i></i>MSME Registered</span>',
+    '<span><i></i>IEC Exportser</span>',
+    '<span><i></i>On-site commissioning available</span>',
+    '<span><i></i>12-month warranty</span>',
+    '<span><i></i>Pan-India dispatch</span>',
+  ];
+  document.getElementById('ticker').innerHTML = (bits.join('') + bits.join(''));
+}
+
+/* MODAL */
+const M = {
+  el: document.getElementById('modal'),
+  img: document.getElementById('mImg'),
+  cat: document.getElementById('mCat'),
+  cat2: document.getElementById('mCat2'),
+  name: document.getElementById('mName'),
+  price: document.getElementById('mPrice'),
+  specs: document.getElementById('mSpecs'),
+};
+let CUR = null;
+function openModal(p) {
+  CUR = p;
+  M.img.src = p.img;
+  M.img.alt = p.n;
+  M.cat.textContent = p.c;
+  M.cat2.textContent = p.c;
+  M.name.textContent = p.n;
+  M.price.textContent = p.p;
+  M.specs.innerHTML = Object.entries(p.specs).map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+  M.el.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { M.el.classList.remove('show'); document.body.style.overflow = ''; }
+M.el.addEventListener('click', e => { if (e.target === M.el) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+function waProduct() {
+  if (!CUR) return;
+  const msg = encodeURIComponent(`KH Infra: I would like to request a quotation for the ${CUR.n} (${CUR.p}). Please share availability and delivery terms.`);
+  window.open(`https://wa.me/917942716283?text=${msg}`, '_blank');
+}
+
+/* FORM chips */
+document.getElementById('chips').addEventListener('click', e => {
+  if (e.target.classList.contains('chip')) e.target.classList.toggle('on');
+});
+function sendWA() {
+  const picks = [...document.querySelectorAll('#chips .chip.on')].map(c => c.dataset.cat);
+  const msg = encodeURIComponent(`Hi KH Infra, I would like to request a quotation.${picks.length ? '\nProduct category: ' + picks.join(', ') : ''}`);
+  window.open(`https://wa.me/917942716283?text=${msg}`, '_blank');
+}
+function handleSubmit() {
+  // Sync selected chips to hidden field before submit
+  const picks = [...document.querySelectorAll('#chips .chip.on')].map(c => c.dataset.cat);
+  document.getElementById('hiddenCats').value = picks.join(', ');
+}
+
+// Form submission via fetch for better UX
+const form = document.getElementById('enquiryForm');
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  handleSubmit(); // sync chips
+  const btn = form.querySelector('button[type="submit"]');
+  const msg = document.getElementById('formMsg');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  try {
+    const resp = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+    const data = await resp.json();
+    if (data.success) {
+      msg.style.display = 'block'; msg.style.background = '#dcfce7'; msg.style.color = '#166534';
+      msg.textContent = 'Enquiry sent! Our team will get back to you shortly.';
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'form',
+          event_label: 'enquiry_submit_success',
+          product_categories: document.getElementById('hiddenCats').value || 'none'
+        });
+      }
+      form.reset(); document.querySelectorAll('#chips .chip').forEach(c => c.classList.remove('on'));
+    } else {
+      msg.style.display = 'block'; msg.style.background = '#fee2e2'; msg.style.color = '#991b1b';
+      msg.textContent = 'Something went wrong. Please try WhatsApp instead.';
+    }
+  } catch {
+    msg.style.display = 'block'; msg.style.background = '#fee2e2'; msg.style.color = '#991b1b';
+    msg.textContent = 'Network error. Please try WhatsApp instead.';
+  }
+  btn.textContent = 'Submit enquiry'; btn.disabled = false;
+  setTimeout(() => { msg.style.display = 'none'; }, 5000);
+});
+
+/* GA4 click tracking — phone, WhatsApp, email, product modal */
+document.addEventListener('click', function(e) {
+  if (typeof gtag !== 'function') return;
+  const a = e.target.closest('a');
+  if (a) {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('tel:')) {
+      gtag('event', 'phone_click', { event_category: 'contact', event_label: href.replace('tel:', '') });
+    } else if (href.includes('wa.me')) {
+      gtag('event', 'whatsapp_click', { event_category: 'contact', event_label: a.textContent.trim().slice(0, 40) || 'whatsapp' });
+    } else if (href.startsWith('mailto:')) {
+      gtag('event', 'email_click', { event_category: 'contact', event_label: href.replace('mailto:', '') });
+    }
+  }
+  const card = e.target.closest('[data-idx]');
+  if (card) {
+    const p = (typeof PRODUCTS !== 'undefined' && PRODUCTS[+card.dataset.idx]) ? PRODUCTS[+card.dataset.idx] : null;
+    gtag('event', 'product_view', { event_category: 'catalog', event_label: p ? (p.name || p.title || 'product') : 'product' });
+  }
+});
+
+/* INIT */
+renderCats();
+renderGrid();
+renderTicker();
+</script>
+
+</body>
+</html>
