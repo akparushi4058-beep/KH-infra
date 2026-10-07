@@ -116,6 +116,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-cta { display:flex; gap: 10px; align-items: center; }
+.nav-phone {
+  display:inline-flex; align-items:center; gap: 6px;
+  margin-right: 6px;
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.nav-phone svg { color: var(--muted); flex-shrink: 0; }
+.nav-phone:hover { color: var(--accent); }
 .hamburger { display: none; width: 38px; height: 38px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--line); align-items:center; justify-content:center; cursor: pointer; padding: 0;}
 .hamburger svg { width: 18px; height: 18px;}
 .mobile-menu { display: none; position: fixed; inset: 0; z-index: 100; background: var(--bg);}
@@ -171,6 +179,36 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--muted); margin-top: 6px; display: block;
 }
+
+section[id] { scroll-margin-top: 90px; }
+
+/* hero category tiles */
+.hero-tiles {
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 190px); gap: 14px;
+}
+.tile {
+  position: relative; overflow: hidden; display: block;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+}
+.tile.big { grid-row: span 2; }
+.tile img {
+  position: absolute; inset: 0 0 44px 0; width: 100%; height: calc(100% - 44px);
+  object-fit: contain; padding: 10px; transition: transform .4s ease;
+}
+.tile.big img { padding: 18px; }
+.tile.photo img { object-fit: cover; padding: 0; }
+.tile-label {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 44px;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
+  background: var(--bg-2); border-top: 1px solid var(--line);
+  font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.005em;
+}
+.tile.big .tile-label { font-size: 16px; }
+.tile-label i { font-style: normal; color: var(--muted); transition: transform .2s, color .2s; }
+.tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.08); border-color: var(--line-2); }
+.tile:hover img { transform: scale(1.04); }
+.tile:hover .tile-label i { color: var(--accent); transform: translateX(3px); }
 
 /* hero feature card */
 .hero-feat { aspect-ratio: 4/3; background: var(--bg-2); border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--line); isolation: isolate;}
@@ -605,6 +643,8 @@ footer {
   .hero-meta { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 100%;}
   .hero-meta .m b { font-size: 22px;}
   .hero-feat { aspect-ratio: 4/3; max-width: 460px; margin: 0 auto;}
+  .hero-tiles { grid-template-rows: 220px repeat(2, 150px); }
+  .tile.big { grid-row: auto; grid-column: span 2; }
   .section { padding: 50px 0;}
   .section-head { flex-direction: column; align-items: flex-start; gap: 16px;}
   .section-head h2 { font-size: 32px;}
@@ -646,9 +686,19 @@ footer {
   .nav-inner { padding: 14px 16px;}
   .logo .word { font-size: 15px;}
   .logo .tag { display: none;}
-  .nav-cta .btn { padding: 8px 12px; font-size: 13px;}
+  .nav-cta .btn { padding: 9px 10px; font-size: 0; gap: 0;}
+  .nav-phone { font-size: 13px; margin-right: 0; }
+  .nav-phone svg { display: none; }
   .hero { padding: 32px 0 24px;}
   .hero h1 { font-size: 36px; margin-bottom: 16px;}
+  .hero-grid { gap: 16px; }
+  .hero-tiles { grid-template-rows: 170px repeat(2, 124px); gap: 10px; }
+  .tile img, .tile.big img { padding: 4px; }
+  .tile.photo img { padding: 0; }
+  .hero-actions { margin-bottom: 24px; }
+  .tile-label { font-size: 12.5px; padding: 0 12px; height: 40px; }
+  .tile img { height: calc(100% - 40px); }
+  .tile.big .tile-label { font-size: 14px; }
   .eyebrow { margin-bottom: 16px; font-size: 11px;}
   .hero-actions { gap: 8px; margin-bottom: 32px;}
   .hero-actions .btn { padding: 12px 16px; font-size: 14px;}
@@ -699,9 +749,9 @@ footer {
     </div>
 
     <div class="nav-cta">
-      <a class="btn primary" href="tel:+918386055533" aria-label="Call">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 20 20 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
-        <span>Call now</span>
+      <a class="nav-phone" href="tel:+918386055533" aria-label="Call +91 83860 55533">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 20 20 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+        <span>+91 83860 55533</span>
       </a>
       <a class="btn wa" href="https://wa.me/918386055533" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16"><path d="M16.001 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.354.617 4.65 1.787 6.677L2.667 29.333l6.83-1.762A13.31 13.31 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333S23.364 2.667 16.001 2.667zm0 24.444a11.07 11.07 0 0 1-5.643-1.541l-.405-.24-4.045 1.043 1.077-3.94-.264-.42a11.063 11.063 0 0 1-1.69-5.913c0-6.122 4.978-11.1 11.099-11.1 2.964 0 5.752 1.155 7.85 3.252a11.024 11.024 0 0 1 3.249 7.85c-.002 6.122-4.98 11.099-11.228 11.099zm6.082-8.305c-.333-.167-1.974-.974-2.28-1.085-.305-.111-.527-.167-.749.167-.222.333-.86 1.085-1.054 1.307-.194.222-.388.25-.722.083-.333-.166-1.408-.519-2.682-1.654-.991-.884-1.66-1.977-1.854-2.31-.194-.333-.02-.514.146-.68.15-.149.333-.388.5-.582.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.582-.083-.166-.749-1.806-1.026-2.473-.27-.65-.545-.563-.749-.572l-.638-.011a1.225 1.225 0 0 0-.888.416c-.305.333-1.165 1.139-1.165 2.778s1.193 3.222 1.36 3.444c.166.222 2.347 3.583 5.685 5.024.795.343 1.415.548 1.898.7.798.254 1.524.218 2.097.132.64-.095 1.974-.806 2.252-1.585.278-.778.278-1.444.194-1.585-.083-.139-.305-.222-.638-.388z"/></svg>
@@ -761,8 +811,27 @@ footer {
       </div>
     </div>
 
-    <div class="hero-feat">
-      <img src="webisteHero.png"  alt="KH Infra factory floor with concrete mixers and equipment" />
+    <div class="hero-tiles">
+      <a class="tile big photo" href="#catalog" data-cats="Bar Bending|Bar Cutting">
+        <img src="bar bending 2.jpeg" alt="KH Group bar bending machine" />
+        <span class="tile-label">Rebar Processing <i>→</i></span>
+      </a>
+      <a class="tile" href="#catalog" data-cats="Monkey Crane|Tower Hoist">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2026/5/605960620/EJ/KO/WQ/190502498/monkey-crane-300kg-panjab-model-500x500.png" alt="KH Group monkey crane lifting cement bags" />
+        <span class="tile-label">Lifting Solutions <i>→</i></span>
+      </a>
+      <a class="tile photo" href="#catalog" data-cats="Suspended Platform">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png" alt="Suspended working platform" />
+        <span class="tile-label">Suspended Platforms <i>→</i></span>
+      </a>
+      <a class="tile" href="#catalog" data-cats="Vibrator">
+        <img src="Rammer.png" alt="KH Group earth rammer compactor" />
+        <span class="tile-label">Compaction Equipment <i>→</i></span>
+      </a>
+      <a class="tile" href="#catalog" data-cats="Concrete Mixer">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2026/5/605954635/RG/PQ/ZC/190502498/2-pole-concrete-mixture-machine-65-feet-height-12-hp-engine-500x500.png" alt="KH Group concrete mixer with hopper" />
+        <span class="tile-label">Concrete Mixers <i>→</i></span>
+      </a>
     </div>
   </div>
 </section>
@@ -1174,7 +1243,7 @@ let activeCat = "All";
 function renderCats() {
   const el = document.getElementById('cats');
   el.innerHTML = CATS.map(c => `
-    <button class="cat-chip ${c.k === activeCat ? 'on' : ''}" data-cat="${c.k}">
+    <button class="cat-chip ${activeCat.split('|').includes(c.k) ? 'on' : ''}" data-cat="${c.k}">
       ${c.k} <span class="n">${c.n}</span>
     </button>
   `).join('');
@@ -1186,7 +1255,7 @@ function renderCats() {
 }
 function renderGrid() {
   const grid = document.getElementById('grid');
-  const list = activeCat === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.c === activeCat);
+  const list = activeCat === 'All' ? PRODUCTS : PRODUCTS.filter(p => activeCat.split('|').includes(p.c));
   grid.innerHTML = list.map((p, i) => `
     <article class="p" data-idx="${PRODUCTS.indexOf(p)}">
       <div class="ph">
@@ -1205,6 +1274,15 @@ function renderGrid() {
     el.addEventListener('click', () => openModal(PRODUCTS[+el.dataset.idx]));
   });
 }
+// Hero category tiles: filter the catalog to that category, then scroll to it
+document.querySelectorAll('.hero-tiles .tile').forEach(t => {
+  t.addEventListener('click', e => {
+    e.preventDefault();
+    activeCat = t.dataset.cats; renderCats(); renderGrid();
+    document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
 function renderTicker() {
   const bits = [
     '<span><i></i>ISO 9001:2015</span>',
