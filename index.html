@@ -182,33 +182,35 @@ a { color: inherit; text-decoration: none; }
 
 section[id] { scroll-margin-top: 90px; }
 
-/* hero category tiles */
-.hero-tiles {
-  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 190px); gap: 14px;
+/* intro + sticky category bar */
+.intro { padding: 36px 0 8px; }
+.intro h1 { font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 8px; color: var(--ink); }
+.intro p { margin: 0; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.section.catalog { padding-top: 0; }
+.cat-bar {
+  position: sticky; top: var(--nav-h, 100px); z-index: 40;
+  display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x proximity;
+  margin: 0 -48px 24px; padding: 16px 48px 12px;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-soft);
+  scrollbar-width: none;
 }
-.tile {
-  position: relative; overflow: hidden; display: block;
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+.cat-bar::-webkit-scrollbar { display: none; }
+.cat-item {
+  flex: 0 0 auto; width: 92px; scroll-snap-align: start;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: var(--ink-2);
 }
-.tile.big { grid-row: span 2; }
-.tile img {
-  position: absolute; inset: 0 0 44px 0; width: 100%; height: calc(100% - 44px);
-  object-fit: contain; padding: 10px; transition: transform .4s ease;
+.cat-item .ic {
+  width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #fff;
+  border: 2px solid var(--line); transition: border-color .15s, box-shadow .15s;
 }
-.tile.big img { padding: 18px; }
-.tile.photo img { object-fit: cover; padding: 0; }
-.tile-label {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 44px;
-  display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
-  background: var(--bg-2); border-top: 1px solid var(--line);
-  font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.005em;
-}
-.tile.big .tile-label { font-size: 16px; }
-.tile-label i { font-style: normal; color: var(--muted); transition: transform .2s, color .2s; }
-.tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.08); border-color: var(--line-2); }
-.tile:hover img { transform: scale(1.04); }
-.tile:hover .tile-label i { color: var(--accent); transform: translateX(3px); }
+.cat-item .ic img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+.cat-item .ic.photo img { object-fit: cover; padding: 0; }
+.cat-item .lb { font-size: 12px; line-height: 1.25; text-align: center; font-weight: 500; }
+.cat-item:hover .ic { border-color: var(--line-2); }
+.cat-item.on .ic { border-color: var(--ink); box-shadow: 0 0 0 2px #fff inset; }
+.cat-item.on .lb { color: var(--ink); font-weight: 700; }
 
 /* hero feature card */
 .hero-feat { aspect-ratio: 4/3; background: var(--bg-2); border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--line); isolation: isolate;}
@@ -629,6 +631,7 @@ footer {
 /* TABLET */
 @media (max-width: 860px) {
   .channels { grid-template-columns: 1fr; }
+  .cat-bar { margin: 0 -20px 20px; padding: 12px 20px 10px; }
   .contact { padding: 56px 0 48px; }
   .nav-links { display: none; }
   .hamburger { display: none; }
@@ -645,8 +648,6 @@ footer {
   .hero-meta { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 100%;}
   .hero-meta .m b { font-size: 22px;}
   .hero-feat { aspect-ratio: 4/3; max-width: 460px; margin: 0 auto;}
-  .hero-tiles { grid-template-rows: 220px repeat(2, 150px); }
-  .tile.big { grid-row: auto; grid-column: span 2; }
   .section { padding: 50px 0;}
   .section-head { flex-direction: column; align-items: flex-start; gap: 16px;}
   .section-head h2 { font-size: 32px;}
@@ -690,17 +691,19 @@ footer {
   .logo .tag { display: none;}
   .nav-cta .btn { padding: 9px 10px; font-size: 0; gap: 0;}
   .nav-phone { font-size: 13px; margin-right: 0; }
+  .logo .mark { width: 44px; height: 44px; }
+  .nav-inner { padding: 10px 16px; }
+  .intro { padding: 20px 0 4px; }
+  .intro h1 { font-size: 26px; margin-bottom: 4px; }
+  .intro p { font-size: 13px; }
+  .cat-bar { margin: 0 -16px 16px; padding: 12px 16px 10px; gap: 2px; }
+  .cat-item { width: 76px; }
+  .cat-item .ic { width: 56px; height: 56px; }
+  .cat-item .lb { font-size: 11px; }
   .nav-phone svg { display: none; }
   .hero { padding: 32px 0 24px;}
   .hero h1 { font-size: 36px; margin-bottom: 16px;}
-  .hero-grid { gap: 16px; }
-  .hero-tiles { grid-template-rows: 170px repeat(2, 124px); gap: 10px; }
-  .tile img, .tile.big img { padding: 4px; }
-  .tile.photo img { padding: 0; }
   .hero-actions { margin-bottom: 24px; }
-  .tile-label { font-size: 12.5px; padding: 0 12px; height: 40px; }
-  .tile img { height: calc(100% - 40px); }
-  .tile.big .tile-label { font-size: 14px; }
   .eyebrow { margin-bottom: 16px; font-size: 11px;}
   .hero-actions { gap: 8px; margin-bottom: 32px;}
   .hero-actions .btn { padding: 12px 16px; font-size: 14px;}
@@ -763,54 +766,18 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">
-        <span class="dot"></span>
-        <b>Manufacturer since 2009</b>
-      </div>
-      <h1>
-        Built for India's <em>Builders!</em>
-      </h1>
-      <p class="lede">Pan-India shipping with after-sales support and services. </p>
-
-    <div class="hero-tiles">
-      <a class="tile big photo" href="#catalog" data-cats="Bar Bending|Bar Cutting">
-        <img src="bar bending 2.jpeg" alt="KH Group bar bending machine" />
-        <span class="tile-label">Rebar Processing <i>→</i></span>
-      </a>
-      <a class="tile" href="#catalog" data-cats="Monkey Crane|Tower Hoist">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2026/5/605960620/EJ/KO/WQ/190502498/monkey-crane-300kg-panjab-model-500x500.png" alt="KH Group monkey crane lifting cement bags" />
-        <span class="tile-label">Lifting Solutions <i>→</i></span>
-      </a>
-      <a class="tile photo" href="#catalog" data-cats="Suspended Platform">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png" alt="Suspended working platform" />
-        <span class="tile-label">Suspended Platforms <i>→</i></span>
-      </a>
-      <a class="tile" href="#catalog" data-cats="Vibrator">
-        <img src="Rammer.png" alt="KH Group earth rammer compactor" />
-        <span class="tile-label">Compaction Equipment <i>→</i></span>
-      </a>
-      <a class="tile" href="#catalog" data-cats="Concrete Mixer">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2026/5/605954635/RG/PQ/ZC/190502498/2-pole-concrete-mixture-machine-65-feet-height-12-hp-engine-500x500.png" alt="KH Group concrete mixer with hopper" />
-        <span class="tile-label">Concrete Mixers <i>→</i></span>
-      </a>
-    </div>
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <h1>Built for India's Builders!</h1>
+    <p>Construction machinery manufacturer · Jaipur · Since 2009 · Pan-India shipping</p>
   </div>
 </section>
 
 <!-- CATALOG -->
-<section class="section" id="catalog">
+<section class="section catalog" id="catalog">
   <div class="container">
-    <div class="section-head">
-      <h2>Our products</h2>
-      <div class="sub">
-</div>
-    </div>
-
-    <div class="cat-row" id="cats"></div>
+    <nav class="cat-bar" id="cats" aria-label="Product categories"></nav>
 
     <div class="grid" id="grid"></div>
   </div>
@@ -1068,24 +1035,25 @@ const PRODUCTS = [
 /* ============================================================
    RENDER — categories, grid
    ============================================================ */
+const IMIMG = 'https://5.imimg.com/data5/SELLER/Default/';
 const CATS = [
-  { k: "All", n: PRODUCTS.length },
-  ...Array.from(new Set(PRODUCTS.map(p => p.c))).map(c => ({ k: c, n: PRODUCTS.filter(p => p.c === c).length }))
+  { k: "All", label: "All", img: "favicon-192.png" },
+  { k: "Bar Bending|Bar Cutting", label: "Rebar Processing", img: "bar bending 2.jpeg", photo: true },
+  { k: "Monkey Crane|Tower Hoist", label: "Lifting Solutions", img: IMIMG + "2026/5/605960620/EJ/KO/WQ/190502498/monkey-crane-300kg-panjab-model-500x500.png" },
+  { k: "Suspended Platform", label: "Suspended Platforms", img: IMIMG + "2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png", photo: true },
+  { k: "Vibrator", label: "Compaction", img: "Rammer.png" },
+  { k: "Concrete Mixer", label: "Concrete Mixers", img: IMIMG + "2026/5/605954635/RG/PQ/ZC/190502498/2-pole-concrete-mixture-machine-65-feet-height-12-hp-engine-500x500.png" },
+  { k: "Construction Equipment", label: "Other Equipment", img: IMIMG + "2026/4/597064476/BN/NN/LG/190502498/banana-concrete-bucket-1-cum-500x500.jpeg" },
 ];
 let activeCat = "All";
 
 function renderCats() {
-  const el = document.getElementById('cats');
-  el.innerHTML = CATS.map(c => `
-    <button class="cat-chip ${activeCat.split('|').includes(c.k) ? 'on' : ''}" data-cat="${c.k}">
-      ${c.k} <span class="n">${c.n}</span>
+  document.getElementById('cats').innerHTML = CATS.map(c => `
+    <button class="cat-item ${c.k === activeCat ? 'on' : ''}" data-cats="${c.k}">
+      <span class="ic ${c.photo ? 'photo' : ''}"><img src="${c.img}" alt="" loading="lazy" /></span>
+      <span class="lb">${c.label}</span>
     </button>
   `).join('');
-  el.querySelectorAll('.cat-chip').forEach(b => {
-    b.addEventListener('click', () => {
-      activeCat = b.dataset.cat; renderCats(); renderGrid();
-    });
-  });
 }
 function renderGrid() {
   const grid = document.getElementById('grid');
@@ -1108,14 +1076,22 @@ function renderGrid() {
     el.addEventListener('click', () => openModal(PRODUCTS[+el.dataset.idx]));
   });
 }
-// Category tiles and footer links: filter the catalog to that category, then scroll to it
-document.querySelectorAll('[data-cats]').forEach(t => {
-  t.addEventListener('click', e => {
-    e.preventDefault();
-    activeCat = t.dataset.cats; renderCats(); renderGrid();
-    document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
-  });
+// Category bar and footer links: filter the catalog, then bring the first products into view
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-cats]');
+  if (!t) return;
+  e.preventDefault();
+  activeCat = t.dataset.cats; renderCats(); renderGrid();
+  document.querySelector('#cats .on')?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+  const top = document.getElementById('grid').getBoundingClientRect().top + scrollY - navHeight() - document.getElementById('cats').offsetHeight - 24;
+  if (scrollY > top) window.scrollTo({ top, behavior: 'smooth' });
 });
+
+// The category bar sticks just under the header, whose height changes by screen size
+function navHeight() { return document.querySelector('.nav').offsetHeight; }
+function syncNavHeight() { document.documentElement.style.setProperty('--nav-h', navHeight() + 'px'); }
+addEventListener('resize', syncNavHeight);
+syncNavHeight();
 
 
 /* MODAL */
