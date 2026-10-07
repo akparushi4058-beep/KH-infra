@@ -558,61 +558,75 @@ footer {
 .wa-fab svg { width: 28px; height: 28px; }
 
 /* ============================================================
-   PRODUCT MODAL
+   PRODUCT SHEET — bottom sheet on phones, centred card on desktop
    ============================================================ */
 .modal-backdrop {
-  position: fixed; inset: 0; background: rgba(17,22,31,.6);
-  backdrop-filter: blur(4px);
-  display:none; z-index: 100;
-  align-items:center; justify-content:center; padding: 40px;
-  animation: fadeIn .15s;
+  position: fixed; inset: 0; z-index: 100; display: none;
+  background: rgba(17,22,31,.55); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 32px;
 }
-@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;}}
-.modal-backdrop.show { display: flex; }
+.modal-backdrop.show { display: flex; animation: fadeIn .15s; }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 .modal {
-  background: var(--bg); border-radius: var(--radius-lg);
-  max-width: 1040px; width: 100%; max-height: 90vh;
-  display: grid; grid-template-columns: 1.1fr 1fr;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  animation: rise .2s ease;
+  position: relative; background: var(--bg); border-radius: var(--radius-lg);
+  width: 100%; max-width: 980px; height: min(640px, 88vh);
+  display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr auto;
+  overflow: hidden; box-shadow: var(--shadow-lg); animation: rise .22s ease;
 }
-@keyframes rise { from { transform: translateY(16px); opacity: 0;} to {transform:none; opacity:1;}}
-
-.m-img {
-  background: var(--bg-2); position: relative;
-  overflow: hidden;
-  display:flex; align-items:center; justify-content:center;
-}
-.m-img img { width: 100%; height: 100%; object-fit: cover; }
-.m-img .pill {
-  position:absolute; top: 18px; left: 18px;
-  background: var(--accent); padding: 6px 12px;
-  font-family:'Inter', sans-serif; font-size: 11px;
-  border-radius: 4px;
-  text-transform: uppercase; letter-spacing: 0.12em;
-}
-.m-info { padding: 40px; overflow-y: auto; position: relative; }
+@keyframes rise { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.m-grab { display: none; }
 .m-close {
-  position: absolute; top: 16px; right: 16px;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--bg-2); color: var(--ink);
-  display:flex; align-items:center; justify-content:center;
-  border: 1px solid var(--line-soft); font-size: 18px; cursor: pointer;
-  transition: all .15s;
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,.92); color: var(--ink); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; cursor: pointer;
 }
-.m-close:hover { background: var(--ink); color: var(--bg);}
-.m-info .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-weight: 600;}
-.m-info h2 { font-family:'Inter',sans-serif; font-size: 24px; letter-spacing: -0.015em; line-height: 1.2; margin: 8px 0 16px; font-weight: 600;}
-.m-info .price { font-family:'Inter',sans-serif; font-size: 22px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 20px; color: var(--ink); font-weight: 600;}
-.m-info .price span { font-size: 12px; color: var(--muted); margin-left: 8px; }
-.m-info .desc { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 20px; }
-.m-info h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 16px 0 12px; font-weight: 600;}
-.m-info .specs { display:grid; grid-template-columns: auto 1fr; gap: 8px 20px; font-size: 14px; }
-.m-info .specs dt { color: var(--muted); }
-.m-info .specs dd { margin: 0; font-family:'Inter', sans-serif; font-size: 13px; color: var(--ink);}
-.m-info .m-actions { display:flex; gap: 10px; margin-top: 28px; }
-.m-info .m-actions .btn { flex: 1; justify-content: center; padding: 14px; }
+.m-close:hover { background: var(--ink); color: var(--bg); }
+
+.m-gallery { position: relative; grid-row: span 2; background: #fff; min-height: 0; }
+.m-track {
+  display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.m-track::-webkit-scrollbar { display: none; }
+.m-track img {
+  flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain;
+  scroll-snap-align: center; cursor: zoom-in; background: #fff;
+}
+.m-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+  background: rgba(255,255,255,.92); font-size: 24px; line-height: 1; cursor: pointer; color: var(--ink);
+}
+.m-arrow.prev { left: 12px; }
+.m-arrow.next { right: 12px; }
+.m-arrow[hidden] { display: none; }
+.m-dots { position: absolute; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
+.m-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,.2); transition: all .2s; }
+.m-dots i.on { background: var(--ink); width: 18px; border-radius: 4px; }
+
+.m-info { padding: 32px 32px 16px; overflow-y: auto; min-height: 0; }
+.m-info .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; }
+.m-info h2 { font-size: 24px; letter-spacing: -0.015em; line-height: 1.2; margin: 6px 0 10px; font-weight: 700; padding-right: 36px; }
+.m-info .desc { font-size: 15px; line-height: 1.55; color: var(--ink-2); margin: 0 0 8px; }
+.m-info .desc:empty { display: none; }
+.m-info h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 20px 0 8px; font-weight: 600; }
+.m-info .specs { display: grid; grid-template-columns: auto 1fr; margin: 0; font-size: 14px; border-top: 1px solid var(--line); }
+.m-info .specs dt, .m-info .specs dd { padding: 11px 0; border-bottom: 1px solid var(--line); margin: 0; }
+.m-info .specs dt { color: var(--muted); padding-right: 20px; }
+.m-info .specs dd { color: var(--ink); font-weight: 600; text-align: right; }
+.m-share {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+  background: none; border: 0; padding: 6px 0; font: inherit; font-size: 14px; font-weight: 500; color: var(--ink-2); cursor: pointer;
+}
+.m-share:hover { color: var(--ink); }
+.m-actions { display: flex; gap: 10px; padding: 14px 32px 20px; border-top: 1px solid var(--line); background: var(--bg); }
+.m-actions .btn { flex: 1; justify-content: center; padding: 14px; font-size: 15px; font-weight: 600; }
+
+.viewer { position: fixed; inset: 0; z-index: 120; background: #000; display: none; }
+.viewer.show { display: block; }
+.viewer img { display: block; width: 100%; height: 100%; object-fit: contain; touch-action: pinch-zoom; }
+.viewer .m-close { position: fixed; }
 
 /* ============================================================
    RESPONSIVE — tablet & mobile
@@ -676,11 +690,19 @@ footer {
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 36px;}
   .foot-grid > div:nth-child(4) { grid-column: span 2;}
   .foot-bottom { flex-direction: column; gap: 8px;}
-  /* Modal — fullscreen on mobile */
-  .modal-backdrop { padding: 0; align-items: stretch;}
-  .modal { grid-template-columns: 1fr; max-height: 100vh; height: 100vh; border-radius: 0; overflow-y: auto;}
-  .m-img { aspect-ratio: 4/3; }
-  .m-info { padding: 24px;}
+  /* Product sheet — slides up from the bottom */
+  .modal-backdrop { padding: 0; align-items: flex-end; }
+  .modal {
+    max-width: none; height: calc(100% - 24px); border-radius: 18px 18px 0 0;
+    grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
+    animation: sheetUp .28s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes sheetUp { from { transform: translateY(100%); } to { transform: none; } }
+  .m-grab { display: block; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 40px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.18); z-index: 3; }
+  .m-gallery { grid-row: auto; aspect-ratio: 1 / 1; max-height: 50vh; width: 100%; }
+  .m-arrow { display: none; }
+  .m-info { padding: 20px 20px 12px; }
+  .m-actions { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
 }
 
 /* PHONE */
@@ -735,9 +757,7 @@ footer {
   .foot-grid > div:nth-child(4) { grid-column: auto;}
   .wa-fab { width: 52px; height: 52px; right: 16px; bottom: 16px;}
   .wa-fab svg { width: 24px; height: 24px;}
-  .m-info { padding: 20px;}
-  .m-info h2 { font-size: 20px;}
-  .m-info .price { font-size: 18px;}
+  .m-info h2 { font-size: 21px; }
 }
 </style>
 </head>
@@ -874,37 +894,45 @@ footer {
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.354.617 4.65 1.787 6.677L2.667 29.333l6.83-1.762A13.31 13.31 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333S23.364 2.667 16.001 2.667zm0 24.444a11.07 11.07 0 0 1-5.643-1.541l-.405-.24-4.045 1.043 1.077-3.94-.264-.42a11.063 11.063 0 0 1-1.69-5.913c0-6.122 4.978-11.1 11.099-11.1 2.964 0 5.752 1.155 7.85 3.252a11.024 11.024 0 0 1 3.249 7.85c-.002 6.122-4.98 11.099-11.228 11.099zm6.082-8.305c-.333-.167-1.974-.974-2.28-1.085-.305-.111-.527-.167-.749.167-.222.333-.86 1.085-1.054 1.307-.194.222-.388.25-.722.083-.333-.166-1.408-.519-2.682-1.654-.991-.884-1.66-1.977-1.854-2.31-.194-.333-.02-.514.146-.68.15-.149.333-.388.5-.582.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.582-.083-.166-.749-1.806-1.026-2.473-.27-.65-.545-.563-.749-.572l-.638-.011a1.225 1.225 0 0 0-.888.416c-.305.333-1.165 1.139-1.165 2.778s1.193 3.222 1.36 3.444c.166.222 2.347 3.583 5.685 5.024.795.343 1.415.548 1.898.7.798.254 1.524.218 2.097.132.64-.095 1.974-.806 2.252-1.585.278-.778.278-1.444.194-1.585-.083-.139-.305-.222-.638-.388z"/></svg>
 </a>
 
-<!-- MODAL -->
-<div class="modal-backdrop" id="modal">
-  <div class="modal">
-    <div class="m-img">
-      <div class="pill" id="mCat">Concrete Mixer</div>
-      <img id="mImg" alt="" />
+<!-- PRODUCT SHEET -->
+<div class="modal-backdrop" id="modal" aria-hidden="true">
+  <div class="modal" id="sheet" role="dialog" aria-modal="true" aria-labelledby="mName">
+    <div class="m-grab" aria-hidden="true"></div>
+    <button class="m-close" onclick="closeModal()" aria-label="Close">×</button>
+    <div class="m-gallery">
+      <div class="m-track" id="mTrack"></div>
+      <button class="m-arrow prev" onclick="slide(-1)" aria-label="Previous photo">‹</button>
+      <button class="m-arrow next" onclick="slide(1)" aria-label="Next photo">›</button>
+      <div class="m-dots" id="mDots"></div>
     </div>
-    <div class="m-info">
-      <button class="m-close" onclick="closeModal()">×</button>
-      <div class="cat" id="mCat2">Concrete Mixer</div>
-      <h2 id="mName">Bar Bending Machine GW42</h2>
-      <div class="price" style="font-size: 36px;">  <span id="mPrice"> </span></div>
-      <div class="desc" id="mDesc" style="display:none">spatch.</div>
-
+    <div class="m-info" id="mInfo">
+      <div class="cat" id="mCat"></div>
+      <h2 id="mName"></h2>
+      <p class="desc" id="mDesc"></p>
       <h4>Specifications</h4>
       <dl class="specs" id="mSpecs"></dl>
-
-      <h4 style="display:none">Includes</h4>
-      <div style="display:none; font-size:13px; color: var(--ink-2); line-height: 1.7;">
-        Factory commissioning guide · 12-month warranty · technical support · GST invoice
-      </div>
-
-      <div class="m-actions">
-        <button class="btn wa" onclick="waProduct()">
-          <svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M16.001 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.354.617 4.65 1.787 6.677L2.667 29.333l6.83-1.762A13.31 13.31 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333S23.364 2.667 16.001 2.667zm0 24.444a11.07 11.07 0 0 1-5.643-1.541l-.405-.24-4.045 1.043 1.077-3.94-.264-.42a11.063 11.063 0 0 1-1.69-5.913c0-6.122 4.978-11.1 11.099-11.1 2.964 0 5.752 1.155 7.85 3.252a11.024 11.024 0 0 1 3.249 7.85c-.002 6.122-4.98 11.099-11.228 11.099zm6.082-8.305c-.333-.167-1.974-.974-2.28-1.085-.305-.111-.527-.167-.749.167-.222.333-.86 1.085-1.054 1.307-.194.222-.388.25-.722.083-.333-.166-1.408-.519-2.682-1.654-.991-.884-1.66-1.977-1.854-2.31-.194-.333-.02-.514.146-.68.15-.149.333-.388.5-.582.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.582-.083-.166-.749-1.806-1.026-2.473-.27-.65-.545-.563-.749-.572l-.638-.011a1.225 1.225 0 0 0-.888.416c-.305.333-1.165 1.139-1.165 2.778s1.193 3.222 1.36 3.444c.166.222 2.347 3.583 5.685 5.024.795.343 1.415.548 1.898.7.798.254 1.524.218 2.097.132.64-.095 1.974-.806 2.252-1.585.278-.778.278-1.444.194-1.585-.083-.139-.305-.222-.638-.388z"/></svg>
-          WhatsApp us
-        </button>
-        <a class="btn primary" href="tel:+918386055533" style="flex:1; justify-content:center; padding:14px;">Call now</a>
-      </div>
+      <button class="m-share" onclick="shareProduct()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+        <span id="mShareLbl">Share this machine</span>
+      </button>
+    </div>
+    <div class="m-actions">
+      <a class="btn wa" id="mWa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M16.001 2.667C8.638 2.667 2.667 8.638 2.667 16c0 2.354.617 4.65 1.787 6.677L2.667 29.333l6.83-1.762A13.31 13.31 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333S23.364 2.667 16.001 2.667zm0 24.444a11.07 11.07 0 0 1-5.643-1.541l-.405-.24-4.045 1.043 1.077-3.94-.264-.42a11.063 11.063 0 0 1-1.69-5.913c0-6.122 4.978-11.1 11.099-11.1 2.964 0 5.752 1.155 7.85 3.252a11.024 11.024 0 0 1 3.249 7.85c-.002 6.122-4.98 11.099-11.228 11.099zm6.082-8.305c-.333-.167-1.974-.974-2.28-1.085-.305-.111-.527-.167-.749.167-.222.333-.86 1.085-1.054 1.307-.194.222-.388.25-.722.083-.333-.166-1.408-.519-2.682-1.654-.991-.884-1.66-1.977-1.854-2.31-.194-.333-.02-.514.146-.68.15-.149.333-.388.5-.582.166-.194.222-.333.333-.555.111-.222.056-.416-.028-.582-.083-.166-.749-1.806-1.026-2.473-.27-.65-.545-.563-.749-.572l-.638-.011a1.225 1.225 0 0 0-.888.416c-.305.333-1.165 1.139-1.165 2.778s1.193 3.222 1.36 3.444c.166.222 2.347 3.583 5.685 5.024.795.343 1.415.548 1.898.7.798.254 1.524.218 2.097.132.64-.095 1.974-.806 2.252-1.585.278-.778.278-1.444.194-1.585-.083-.139-.305-.222-.638-.388z"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn primary" href="tel:+918386055533">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 20 20 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+        Call
+      </a>
     </div>
   </div>
+</div>
+
+<!-- FULL-SCREEN PHOTO -->
+<div class="viewer" id="viewer" onclick="closeViewer()">
+  <button class="m-close" aria-label="Close photo">×</button>
+  <img id="vImg" alt="" />
 </div>
 
 <script>
@@ -918,7 +946,9 @@ const IMG = (path) => `https://5.imimg.com/data5/${path}-500x500.${path.endsWith
 const PRODUCTS = [
   { n: "Bar Bending Machine GW42", c: "Bar Bending", p: "",
     img: "bar bending.png",
-    specs: { Capacity: "upto 32 mm", Power: "3 kW / 5.5 HP", Phase: "3-phase", Weight: "~380 kg", Warranty: "12 months" } },
+    imgs: ["products/gw42-specs.jpg", "products/gw42-expo.jpg"],
+    d: "Heavy-duty rebar bending machine for bars up to 32 mm. Ideal for construction sites, infrastructure projects and precast yards.",
+    specs: { Capacity: "upto 32 mm", Power: "3 kW", Phase: "3-phase", Weight: "320 kg", Warranty: "12 months" } },
   { n: "Bar Bending Machine GW52", c: "Bar Bending", p: "",
     img: "bar bending 2.jpeg",
     specs: { Capacity: "upto 40 mm", Power: "4 kW", Phase: "3-phase", Weight: "~520 kg", Warranty: "12 months" } },
@@ -927,7 +957,9 @@ const PRODUCTS = [
     specs: { Capacity: "40Ø mm", Power: "3 kW / 4 HP", Phase: "3-phase", Weight: "~410 kg", Warranty: "12 months" } },
   { n: "Bar Cutting Machine \nGQ 42", c: "Bar Cutting", p: " ",
     img: "bar cutting.png",
-    specs: { Capacity: "42Ø mm", Power: "4 kW / 5.5 HP", Phase: "3-phase", Weight: "~450 kg", Warranty: "12 months" } },
+    imgs: ["products/gq42-photo.jpg", "products/gq42-specs.jpg"],
+    d: "Heavy-duty rebar cutting machine for bars up to 32 mm. Ideal for construction sites, infrastructure projects and precast yards.",
+    specs: { Capacity: "up to 32 mm", Power: "3 kW", Phase: "3-phase", Weight: "390 kg", Warranty: "12 months" } },
   { n: "Scrap Straightening Machine", c: "Suspended Platform", p: "",
     img: "https://5.imimg.com/data5/SELLER/Default/2025/5/515311354/CB/WA/DK/190502498/scrap-straightening-machine-500x500.jpeg",
     specs: { Capacity: "6–16 mm", Power: "5.5 kW", "Feed speed": "10 m/min", Weight: "~520 kg", Warranty: "12 months" } },
@@ -1095,36 +1127,110 @@ syncNavHeight();
 
 
 /* MODAL */
+/* ============================================================
+   PRODUCT SHEET
+   ============================================================ */
 const M = {
-  el: document.getElementById('modal'),
-  img: document.getElementById('mImg'),
-  cat: document.getElementById('mCat'),
-  cat2: document.getElementById('mCat2'),
-  name: document.getElementById('mName'),
-  price: document.getElementById('mPrice'),
-  specs: document.getElementById('mSpecs'),
+  el: document.getElementById('modal'), sheet: document.getElementById('sheet'),
+  track: document.getElementById('mTrack'), dots: document.getElementById('mDots'),
+  info: document.getElementById('mInfo'),
 };
-let CUR = null;
-function openModal(p) {
+const plainName = p => p.n.replace(/\s+/g, ' ').trim();
+const slug = p => p.n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const productUrl = p => `${location.origin}${location.pathname}#${slug(p)}`;
+const catLabel = c => (CATS.find(x => x.k.split('|').includes(c)) || {}).label || c;
+let CUR = null, sheetInHistory = false;
+
+function openModal(p, fromLink) {
   CUR = p;
-  M.img.src = p.img;
-  M.img.alt = p.n;
-  M.cat.textContent = p.c;
-  M.cat2.textContent = p.c;
-  M.name.textContent = p.n;
-  M.price.textContent = p.p;
-  M.specs.innerHTML = Object.entries(p.specs).map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
-  M.el.classList.add('show');
+  const photos = [p.img, ...(p.imgs || [])];
+  M.track.innerHTML = photos.map((src, i) => `<img src="${src}" alt="${plainName(p)} – photo ${i + 1}" onclick="openViewer(this.src)" />`).join('');
+  M.dots.innerHTML = photos.length > 1 ? photos.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('') : '';
+  document.getElementById('mCat').textContent = catLabel(p.c);
+  document.getElementById('mName').textContent = plainName(p);
+  document.getElementById('mDesc').textContent = p.d || '';
+  document.getElementById('mSpecs').innerHTML = Object.entries(p.specs).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+  document.getElementById('mShareLbl').textContent = 'Share this machine';
+  const msg = `Hi KH Group, I'm interested in the ${plainName(p)}. Please share price and availability.\n${productUrl(p)}`;
+  document.getElementById('mWa').href = `https://wa.me/918386055533?text=${encodeURIComponent(msg)}`;
+  M.sheet.style.transform = '';
+  M.el.classList.add('show'); M.el.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+  M.track.scrollLeft = 0; M.info.scrollTop = 0;
+  updateArrows();
+  // Give each product its own link, and let the phone's back button close the sheet
+  if (fromLink) history.replaceState(null, '', location.pathname);
+  history.pushState({ product: slug(p) }, '', '#' + slug(p));
+  sheetInHistory = true;
 }
-function closeModal() { M.el.classList.remove('show'); document.body.style.overflow = ''; }
+function hideSheet() {
+  M.el.classList.remove('show'); M.el.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = ''; CUR = null;
+}
+function closeModal() {
+  if (!M.el.classList.contains('show')) return;
+  if (sheetInHistory) history.back(); else hideSheet();
+}
+addEventListener('popstate', () => {
+  sheetInHistory = false;
+  closeViewer();
+  if (M.el.classList.contains('show')) hideSheet();
+});
 M.el.addEventListener('click', e => { if (e.target === M.el) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-function waProduct() {
-  if (!CUR) return;
-  const msg = encodeURIComponent(`KH Infra: I would like to request a quotation for the ${CUR.n} (${CUR.p}). Please share availability and delivery terms.`);
-  window.open(`https://wa.me/918386055533?text=${msg}`, '_blank');
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('viewer').classList.contains('show')) closeViewer(); else closeModal();
+});
+
+// Gallery: swipe on phones, arrows on desktop, dots follow the current photo
+function current() { return Math.round(M.track.scrollLeft / (M.track.clientWidth || 1)); }
+function slide(dir) { M.track.scrollTo({ left: (current() + dir) * M.track.clientWidth, behavior: 'smooth' }); }
+function updateArrows() {
+  const n = M.track.children.length, i = current();
+  document.querySelector('.m-arrow.prev').hidden = n < 2 || i === 0;
+  document.querySelector('.m-arrow.next').hidden = n < 2 || i === n - 1;
+  [...M.dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
 }
+M.track.addEventListener('scroll', () => requestAnimationFrame(updateArrows), { passive: true });
+
+// Phones: swipe down on the photos or the top of the details to close the sheet
+let dragY = null;
+M.sheet.addEventListener('touchstart', e => {
+  const fromTop = e.target.closest('.m-gallery') || (e.target.closest('.m-info') && M.info.scrollTop === 0);
+  dragY = fromTop ? e.touches[0].clientY : null;
+}, { passive: true });
+M.sheet.addEventListener('touchmove', e => {
+  if (dragY === null) return;
+  const dy = e.touches[0].clientY - dragY;
+  if (dy > 0 && M.info.scrollTop === 0) M.sheet.style.transform = `translateY(${dy}px)`;
+}, { passive: true });
+M.sheet.addEventListener('touchend', e => {
+  if (dragY === null) return;
+  const dy = e.changedTouches[0].clientY - dragY; dragY = null;
+  M.sheet.style.transition = 'transform .2s';
+  M.sheet.style.transform = dy > 120 ? 'translateY(100%)' : '';
+  setTimeout(() => { M.sheet.style.transition = ''; if (dy > 120) closeModal(); }, 200);
+});
+
+// Full-screen photo (pinch to zoom on phones)
+function openViewer(src) { document.getElementById('vImg').src = src; document.getElementById('viewer').classList.add('show'); }
+function closeViewer() { document.getElementById('viewer').classList.remove('show'); }
+
+async function shareProduct() {
+  if (!CUR) return;
+  const url = productUrl(CUR), title = plainName(CUR);
+  if (navigator.share) { try { await navigator.share({ title, text: `${title} – KH Group`, url }); } catch {} return; }
+  try { await navigator.clipboard.writeText(url); document.getElementById('mShareLbl').textContent = 'Link copied'; }
+  catch { window.open(`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`, '_blank'); }
+}
+
+// Open a product straight from a shared link, e.g. khgroupindia.com/#bar-bending-machine-gw42
+function openFromHash() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const p = id && PRODUCTS.find(x => slug(x) === id);
+  if (p && CUR !== p) openModal(p, true);
+}
+addEventListener('hashchange', openFromHash);
 
 /* GA4 click tracking — phone, WhatsApp, email, product modal */
 document.addEventListener('click', function(e) {
@@ -1143,13 +1249,14 @@ document.addEventListener('click', function(e) {
   const card = e.target.closest('[data-idx]');
   if (card) {
     const p = (typeof PRODUCTS !== 'undefined' && PRODUCTS[+card.dataset.idx]) ? PRODUCTS[+card.dataset.idx] : null;
-    gtag('event', 'product_view', { event_category: 'catalog', event_label: p ? (p.name || p.title || 'product') : 'product' });
+    gtag('event', 'product_view', { event_category: 'catalog', event_label: p ? p.n.replace(/\s+/g, ' ') : 'product' });
   }
 });
 
 /* INIT */
 renderCats();
 renderGrid();
+openFromHash();
 </script>
 
 </body>
