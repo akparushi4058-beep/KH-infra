@@ -301,10 +301,16 @@ section[id] { scroll-margin-top: 90px; }
   transition: border-color .15s, box-shadow .2s;
 }
 .p:hover .ph { border-color: var(--ink-2); box-shadow: var(--shadow-md); }
+/* Show the whole machine: photo fits inside the square, a blurred copy fills the gaps */
 .p .ph img {
-  width: 100%; height: 100%; object-fit: cover;
+  position: relative; width: 100%; height: 100%; object-fit: contain;
   transition: transform .4s ease;
 }
+.p .ph img.fill {
+  position: absolute; inset: 0; object-fit: cover;
+  filter: blur(18px) saturate(1.1); transform: scale(1.2); opacity: .55;
+}
+.p:hover .ph img.fill { transform: scale(1.2); }
 .p:hover .ph img { transform: scale(1.04); }
 .p .ph .tl {
   position: absolute; top: 12px; left: 14px;
@@ -961,7 +967,8 @@ const PRODUCTS = [
     d: "Heavy-duty rebar cutting machine for bars up to 32 mm. Ideal for construction sites, infrastructure projects and precast yards.",
     specs: { Capacity: "up to 32 mm", Power: "3 kW", Phase: "3-phase", Weight: "390 kg", Warranty: "12 months" } },
   { n: "Scrap Straightening Machine", c: "Suspended Platform", p: "",
-    img: "https://5.imimg.com/data5/SELLER/Default/2025/5/515311354/CB/WA/DK/190502498/scrap-straightening-machine-500x500.jpeg",
+    img: "products/scrap-straightener-1.jpg",
+    imgs: ["products/scrap-straightener-2.jpg", "products/scrap-straightener-3.jpg"],
     specs: { Capacity: "6–16 mm", Power: "5.5 kW", "Feed speed": "10 m/min", Weight: "~520 kg", Warranty: "12 months" } },
   { n: "Suspended Platform", c: "Suspended Platform", p: "",
     img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568290738/AT/PY/XI/190502498/suspended-platform-500x500.png",
@@ -988,7 +995,8 @@ const PRODUCTS = [
     img: "https://5.imimg.com/data5/SELLER/Default/2025/12/568301613/TS/RX/ND/190502498/concrete-mixer-hyd-hopper-500x500.png",
     specs: { Capacity: "10/7 cuft", Engine: "Diesel / Elec 7.5 HP", "Drum speed": "18–22 RPM", Weight: "~680 kg", Warranty: "12 months" } },
   { n: "Concrete Mixture Machine", c: "Concrete Mixer", p: "",
-    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605954635/RG/PQ/ZC/190502498/2-pole-concrete-mixture-machine-65-feet-height-12-hp-engine-500x500.png",
+    img: "products/mixer-500l-1.jpg",
+    imgs: ["products/mixer-500l-2.jpg", "products/mixer-500l-3.jpg"],
     specs: { Capacity: "12/8 cuft", Engine: "Diesel 10 HP", "Drum speed": "20 RPM", Weight: "~820 kg", Warranty: "12 months" } },
   { n: "Walk Behind Double Drum Roller", c: "Vibrator", p: "",
     img: "https://5.imimg.com/data5/SELLER/Default/2025/5/515300761/OT/LV/TD/190502498/whatsapp-image-2025-05-31-at-19-51-20-500x500.jpeg",
@@ -1005,9 +1013,10 @@ const PRODUCTS = [
   { n: "Twin Screw Mixer", c: "Concrete Mixer", p: "",
     img: "https://5.imimg.com/data5/SELLER/Default/2023/10/354816714/IH/NV/DP/190502498/twin-screw-mixer-500x500.jpg",
     specs: { Capacity: "500 L", Power: "7.5 kW", Phase: "3-phase", Weight: "~640 kg", Warranty: "12 months" } },
-  { n: "Concrete Mixer Machine", c: "Concrete Mixer", p: "",
-    img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605666807/QL/MA/QU/190502498/1-5-2-bag-concrete-mixer-with-3-hp-3-phase-motor-500x500.png",
-    specs: { Capacity: "8/5 cuft", Engine: "Elec 5 HP", "Drum speed": "22 RPM", Weight: "~420 kg", Warranty: "12 months" } },
+  { n: "Concrete Mixer (1.5 Bag, 500 L)", c: "Concrete Mixer", p: "",
+    img: "products/mixer-500l-1.jpg",
+    imgs: ["products/mixer-500l-2.jpg", "products/mixer-500l-3.jpg"],
+    specs: { Capacity: "500 L", Engine: "8 HP Kirloskar", "Handi diameter": "39 inch" } },
   { n: "One Bag Reversible Mixer", c: "Concrete Mixer", p: "",
     img: "https://5.imimg.com/data5/SELLER/Default/2026/5/605666807/QL/MA/QU/190502498/1-5-2-bag-concrete-mixer-with-3-hp-3-phase-motor-500x500.png",
     specs: { Capacity: "10/7 cuft reversible", Engine: "Diesel 8 HP", "Drum speed": "20 RPM", Weight: "~720 kg", Warranty: "12 months" } },
@@ -1094,6 +1103,7 @@ function renderGrid() {
     <article class="p" data-idx="${PRODUCTS.indexOf(p)}">
       <div class="ph">
         <span class="tr">↗</span>
+        <img class="fill" src="${p.img}" alt="" aria-hidden="true" loading="lazy" />
         <img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.style.background='var(--bg-3)'" />
       </div>
       <div class="info">
