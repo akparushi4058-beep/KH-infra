@@ -61,7 +61,8 @@ syncNavHeight();
    ============================================================ */
 const M = {
   el: document.getElementById('modal'), sheet: document.getElementById('sheet'),
-  track: document.getElementById('mTrack'), dots: document.getElementById('mDots'),
+  track: document.getElementById('mTrack'), thumbs: document.getElementById('mThumbs'),
+  count: document.getElementById('mCount'),
   info: document.getElementById('mInfo'),
 };
 const productUrl = p => `${location.origin}/${p.slug}/`;
@@ -72,7 +73,9 @@ function openModal(p) {
   if (!p) return;
   CUR = p;
   M.track.innerHTML = p.images.map((src, i) => `<img src="${src}" alt="${p.name} – photo ${i + 1}" onclick="openViewer(this.src)" />`).join('');
-  M.dots.innerHTML = p.images.length > 1 ? p.images.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('') : '';
+  // Small photos under the main one: tap to jump to that photo
+  M.thumbs.innerHTML = p.images.length > 1 ? p.images.map((src, i) =>
+    `<button type="button" class="${i ? '' : 'on'}" onclick="goTo(${i})" aria-label="Photo ${i + 1}"><img src="${src}" alt="" loading="lazy" /></button>`).join('') : '';
   document.getElementById('mCat').textContent = catLabel(p.cat);
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mDesc').textContent = p.desc || '';
@@ -110,19 +113,22 @@ document.addEventListener('keydown', e => {
 
 // Gallery: swipe on phones, arrows on desktop, dots follow the current photo
 function current() { return Math.round(M.track.scrollLeft / (M.track.clientWidth || 1)); }
-function slide(dir) { M.track.scrollTo({ left: (current() + dir) * M.track.clientWidth, behavior: 'smooth' }); }
+function goTo(i) { M.track.scrollTo({ left: i * M.track.clientWidth, behavior: 'smooth' }); }
+function slide(dir) { goTo(current() + dir); }
 function updateArrows() {
   const n = M.track.children.length, i = current();
   document.querySelector('.m-arrow.prev').hidden = n < 2 || i === 0;
   document.querySelector('.m-arrow.next').hidden = n < 2 || i === n - 1;
-  [...M.dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+  M.count.textContent = n > 1 ? `${i + 1} / ${n}` : '';
+  [...M.thumbs.children].forEach((b, k) => b.classList.toggle('on', k === i));
+  M.thumbs.children[i]?.scrollIntoView({ inline: 'nearest', block: 'nearest' });
 }
 M.track.addEventListener('scroll', () => requestAnimationFrame(updateArrows), { passive: true });
 
 // Phones: swipe down on the photos or the top of the details to close the sheet
 let dragY = null;
 M.sheet.addEventListener('touchstart', e => {
-  const fromTop = e.target.closest('.m-gallery') || (e.target.closest('.m-info') && M.info.scrollTop === 0);
+  const fromTop = e.target.closest('.m-stage') || (e.target.closest('.m-info') && M.info.scrollTop === 0);
   dragY = fromTop ? e.touches[0].clientY : null;
 }, { passive: true });
 M.sheet.addEventListener('touchmove', e => {

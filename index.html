@@ -372,10 +372,13 @@
     <div class="m-grab" aria-hidden="true"></div>
     <button class="m-close" onclick="closeModal()" aria-label="Close">×</button>
     <div class="m-gallery">
-      <div class="m-track" id="mTrack"></div>
-      <button class="m-arrow prev" onclick="slide(-1)" aria-label="Previous photo">‹</button>
-      <button class="m-arrow next" onclick="slide(1)" aria-label="Next photo">›</button>
-      <div class="m-dots" id="mDots"></div>
+      <div class="m-stage">
+        <div class="m-track" id="mTrack"></div>
+        <button class="m-arrow prev" onclick="slide(-1)" aria-label="Previous photo">‹</button>
+        <button class="m-arrow next" onclick="slide(1)" aria-label="Next photo">›</button>
+        <span class="m-count" id="mCount"></span>
+      </div>
+      <div class="m-thumbs" id="mThumbs"></div>
     </div>
     <div class="m-info" id="mInfo">
       <div class="cat" id="mCat"></div>

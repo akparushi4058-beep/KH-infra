@@ -31,6 +31,9 @@ TODAY = datetime.date.today().isoformat()
 
 esc = html.escape
 LAZY = ' loading="lazy"'
+ARROWS = ('<button class="m-arrow prev" type="button" aria-label="Previous photo" hidden>‹</button>'
+          '<button class="m-arrow next" type="button" aria-label="Next photo">›</button>'
+          '<span class="m-count" id="count"></span>')
 catalog = json.loads((ROOT / 'catalog.json').read_text())
 CATS = {c['id']: c for c in catalog['categories']}
 PRODUCTS = catalog['products']
@@ -188,7 +191,10 @@ def product_page(p):
   {crumb_html}
   <div class="pd-grid">
     <div class="pd-gallery">
-      <div class="pd-track" id="track">{images}</div>
+      <div class="pd-stage">
+        <div class="pd-track" id="track">{images}</div>
+        {ARROWS if len(p['images']) > 1 else ''}
+      </div>
       <div class="pd-thumbs" id="thumbs">{thumbs}</div>
     </div>
     <div>
@@ -214,13 +220,21 @@ def product_page(p):
 {FOOTER}
 {FAB}
 <script>
-// Gallery: thumbnails jump to a photo, and follow the photo when swiping
+// Gallery: arrows and thumbnails jump between photos, and follow the photo when swiping
 const track = document.getElementById('track'), thumbs = [...document.querySelectorAll('#thumbs button')];
-thumbs.forEach((b, i) => b.addEventListener('click', () => track.scrollTo({{ left: i * track.clientWidth, behavior: 'smooth' }})));
-track.addEventListener('scroll', () => {{
-  const i = Math.round(track.scrollLeft / track.clientWidth);
+const prev = document.querySelector('.m-arrow.prev'), next = document.querySelector('.m-arrow.next'), count = document.getElementById('count');
+const n = track.children.length, at = () => Math.round(track.scrollLeft / track.clientWidth);
+const goTo = i => track.scrollTo({{ left: i * track.clientWidth, behavior: 'smooth' }});
+thumbs.forEach((b, i) => b.addEventListener('click', () => goTo(i)));
+prev && prev.addEventListener('click', () => goTo(at() - 1));
+next && next.addEventListener('click', () => goTo(at() + 1));
+function sync() {{
+  const i = at();
   thumbs.forEach((b, k) => b.classList.toggle('on', k === i));
-}}, {{ passive: true }});
+  if (prev) {{ prev.hidden = i === 0; next.hidden = i === n - 1; count.textContent = `${{i + 1}} / ${{n}}`; }}
+}}
+track.addEventListener('scroll', () => requestAnimationFrame(sync), {{ passive: true }});
+sync();
 </script>
 </body>
 </html>
