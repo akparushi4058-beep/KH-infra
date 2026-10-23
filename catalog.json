@@ -62,10 +62,11 @@
       "label": "Concrete Mixers",
       "slug": "concrete-mixer-machine",
       "title": "Concrete Mixer Machines",
-      "intro": "Concrete mixer machines from one-bag site mixers to hydraulic hopper mixers, with diesel and electric options.",
+      "intro": "Concrete mixer machines from half bag and one-bag site mixers to hydraulic hopper mixers, with diesel and electric options.",
       "aliases": [
         "Masala mixer machine",
         "Cement mixer",
+        "Half bag mixer",
         "One bag mixer",
         "Hopper mixer"
       ],
@@ -272,6 +273,20 @@
       },
       "old_slugs": [
         "suspended-platform"
+      ],
+      "videos": [
+        {
+          "src": "/products/suspended-platform-video-1.mp4",
+          "poster": "/products/suspended-platform-video-1-poster.jpg",
+          "title": "Suspended Platform working on a high-rise building facade",
+          "uploaded": "2026-06-04"
+        },
+        {
+          "src": "/products/suspended-platform-video-2.mp4",
+          "poster": "/products/suspended-platform-video-2-poster.jpg",
+          "title": "Suspended Platform in use on a building site",
+          "uploaded": "2026-05-08"
+        }
       ]
     },
     {
@@ -469,7 +484,6 @@
       "aliases": [
         "One bag mixer",
         "1 bag concrete mixer",
-        "Half bag mixer machine",
         "Masala mixer machine",
         "Cement mixer",
         "Concrete mixer machine",
@@ -491,6 +505,37 @@
         "1-1-5-bag-concrete-mixer",
         "concrete-mixture-machine"
       ]
+    },
+    {
+      "slug": "half-bag-concrete-mixer",
+      "name": "Half Bag Concrete Mixer",
+      "cat": "mixers",
+      "desc": "Compact half bag concrete mixer for small building sites, house construction and repair work where a full-size mixer is more than you need.",
+      "aliases": [
+        "Half bag mixer machine",
+        "Mini concrete mixer",
+        "Small concrete mixer",
+        "Half bag masala mixer",
+        "Small cement mixer",
+        "हाफ बैग मिक्सर मशीन"
+      ],
+      "images": [
+        "/products/half-bag-mixer-1.jpg",
+        "/products/half-bag-mixer-2.jpg",
+        "/products/half-bag-mixer-3.jpg"
+      ],
+      "videos": [
+        {
+          "src": "/products/half-bag-mixer-video.mp4",
+          "poster": "/products/half-bag-mixer-video-poster.jpg",
+          "title": "Half Bag Concrete Mixer drum rotating",
+          "uploaded": "2026-05-11"
+        }
+      ],
+      "specs": {
+        "Capacity": "Half bag"
+      },
+      "old_slugs": []
     },
     {
       "slug": "walk-behind-double-drum-roller",
