@@ -870,3 +870,14 @@ footer {
   .clients { grid-template-columns: 1fr 1fr; }
   .about-page h1 { font-size: 26px; }
 }
+
+/* Trusted by (homepage, after the product list) */
+.trusted { padding: 8px 0 32px; }
+.trusted h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 14px; font-weight: 700; }
+.trust-names { display: flex; flex-wrap: wrap; gap: 8px; }
+.trust-names span {
+  padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+  font-size: 14px; font-weight: 600; color: var(--ink); background: var(--bg);
+}
+.trusted p { margin: 14px 0 0; font-size: 15px; color: var(--ink-2); }
+.trusted p a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }

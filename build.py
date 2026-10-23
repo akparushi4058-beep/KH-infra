@@ -90,8 +90,9 @@ def short_client(name):
 
 def trust_strip():
     chips = ''.join(f'<span>{esc(short_client(c))}</span>' for c in COMPANY['clients'])
-    return (f'<div class="trust"><span class="lbl">Trusted by</span><div class="names">{chips}'
-            f'<a href="/about/">+ top contractors of Rajasthan</a></div></div>')
+    return (f'<h2>Trusted by leading contractors</h2>'
+            f'<div class="trust-names">{chips}</div>'
+            f'<p>…and most of the top contractors of Rajasthan, since {COMPANY["founded"]}. <a href="/about/">About us</a></p>')
 
 
 def trust_line():
