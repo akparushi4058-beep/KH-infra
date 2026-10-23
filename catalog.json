@@ -303,7 +303,11 @@
         "Material lifting machine"
       ],
       "images": [
-        "/img/monkey-hoist-150kg.jpg"
+        "/img/monkey-hoist-150kg.jpg",
+        "/products/monkey-hoist-clutch-winch.jpg",
+        "/products/monkey-hoist-crane-frame.jpg",
+        "/products/monkey-hoist-trolley.jpg",
+        "/products/monkey-hoist-trolleys-workshop.jpg"
       ],
       "specs": {
         "Capacity": "150 kg",
@@ -315,6 +319,14 @@
       "old_slugs": [
         "monkey-hoist-150-kg",
         "monkey-hoist-150-kgs-no-trolley"
+      ],
+      "videos": [
+        {
+          "src": "/products/monkey-hoist-clutch-winch-video.mp4",
+          "poster": "/products/monkey-hoist-clutch-winch-video-poster.jpg",
+          "title": "Monkey Hoist Crane with Clutch Winch in use",
+          "uploaded": "2026-05-06"
+        }
       ]
     },
     {
@@ -724,5 +736,38 @@
         "surface-plate-vibrator"
       ]
     }
-  ]
+  ],
+  "company": {
+    "founded": "2009",
+    "founder": {
+      "name": "Manish Pandya",
+      "title": "Founder",
+      "education": "Mechanical Engineer, NIT Nagpur",
+      "experience": "30+ years in construction machinery"
+    },
+    "services": [
+      "Manufacturing",
+      "Supply",
+      "Assembly",
+      "Customisation",
+      "Service and repair"
+    ],
+    "expos": [
+      {
+        "name": "India Stonemart",
+        "city": "Jaipur"
+      }
+    ],
+    "clients": [
+      "L&T (Larsen & Toubro)",
+      "BRPLK",
+      "PLK",
+      "Global Buildtech",
+      "CPC Jaipur",
+      "Imagination (SK Facade)",
+      "Zuberi Engineering",
+      "Shrey Infra Projects",
+      "Dhinwa Construction"
+    ]
+  }
 }

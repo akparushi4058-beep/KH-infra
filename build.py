@@ -37,6 +37,7 @@ ARROWS = ('<button class="m-arrow prev" type="button" aria-label="Previous photo
 catalog = json.loads((ROOT / 'catalog.json').read_text())
 CATS = {c['id']: c for c in catalog['categories']}
 PRODUCTS = catalog['products']
+COMPANY = catalog['company']
 index = (ROOT / 'index.html').read_text()
 
 
@@ -62,8 +63,11 @@ ORG = {
     '@context': 'https://schema.org', '@type': 'LocalBusiness', '@id': SITE + '/#business',
     'name': BRAND, 'url': SITE + '/', 'logo': SITE + '/img/kh-infra-equipment-logo.png',
     'image': SITE + '/products/gw42-expo.jpg',
-    'description': 'Construction machinery supplier in Jaipur: bar bending and cutting machines, monkey cranes and hoists, '
-                   'suspended platforms, concrete mixers and compaction equipment, delivered across India.',
+    'description': 'Construction machinery manufacturer and supplier in Jaipur since 2009: bar bending and cutting machines, '
+                   'monkey cranes and hoists, suspended platforms, concrete mixers and compaction equipment, delivered across India.',
+    'foundingDate': COMPANY['founded'],
+    'founder': {'@type': 'Person', 'name': COMPANY['founder']['name'], 'jobTitle': COMPANY['founder']['title'],
+                'alumniOf': 'NIT Nagpur'},
     'telephone': PHONE_1, 'email': EMAIL,
     'address': {'@type': 'PostalAddress', **ADDRESS},
     'hasMap': MAPS_URL, 'areaServed': 'IN',
@@ -78,6 +82,22 @@ PHONE_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 HEADER, FOOTER = section('HEADER'), section('FOOTER')
 FAB = re.search(r'<!-- WHATSAPP FAB -->.*?</a>', index, re.S).group(0)
 GA = re.search(r'<!-- Google Analytics \(GA4\) -->.*?</script>\s*<script>.*?</script>', index, re.S).group(0)
+
+
+def short_client(name):
+    return name.split(' (')[0] if name.startswith('L&T') else name
+
+
+def trust_strip():
+    chips = ''.join(f'<span>{esc(short_client(c))}</span>' for c in COMPANY['clients'])
+    return (f'<div class="trust"><span class="lbl">Trusted by</span><div class="names">{chips}'
+            f'<a href="/about/">+ top contractors of Rajasthan</a></div></div>')
+
+
+def trust_line():
+    names = ', '.join(short_client(c) for c in COMPANY['clients'][:6])
+    return (f'<p class="pd-trust"><b>Trusted by</b> {esc(names)} and top contractors across Rajasthan. '
+            f'Manufacturing and servicing machines in Jaipur since {COMPANY["founded"]}. <a href="/about/">About us</a></p>')
 
 
 def head(title, description, path, image, schema):
@@ -213,6 +233,7 @@ def product_page(p):
       <p class="pd-text">{esc(p['desc'])}</p>
       <h2>Specifications</h2>
       <dl class="pd-specs">{specs}</dl>
+      {trust_line()}
       <div class="pd-cta pd-cta-sticky">
         <a class="btn wa" href="{esc(wa)}" target="_blank" rel="noopener">{WA_ICON} WhatsApp</a>
         <a class="btn primary" href="tel:{PHONE_1}">{PHONE_ICON} Call</a>
@@ -283,6 +304,64 @@ def category_page(c):
 '''
 
 
+def about_page():
+    c, f = COMPANY, COMPANY['founder']
+    path = '/about/'
+    years = datetime.date.today().year - int(c['founded'])
+    title = f'About Us | {BRAND}, Jaipur – Since {c["founded"]}'
+    description = (f'{BRAND} has manufactured, supplied and serviced construction machinery in Jaipur since {c["founded"]}. '
+                   f'Founded by {f["name"]}, {f["education"]}. Trusted by L&T and top contractors of Rajasthan.')
+    crumb_html, crumb_schema = crumbs([('Home', '/'), ('About us', None)])
+    crumb_schema['itemListElement'][-1]['item'] = SITE + path
+    about_schema = {'@context': 'https://schema.org', '@type': 'AboutPage', 'url': SITE + path, 'name': title,
+                    'about': {'@id': SITE + '/#business'}}
+    cats = ', '.join(f'<a href="/{x["slug"]}/">{esc(x["title"].lower())}</a>' for x in catalog['categories'][:5])
+    expos = ', '.join(f'{esc(e["name"])} ({esc(e["city"])})' for e in c['expos'])
+    return f'''{head(title, description, path, '/products/gw42-expo.jpg', ld(about_schema) + ld(crumb_schema))}
+<body>
+{HEADER}
+<main class="container about-page">
+  {crumb_html}
+  <h1>About {BRAND}</h1>
+  <p class="lead">Since {c["founded"]}, {BRAND} has manufactured, supplied, assembled, customised and serviced construction
+  machinery from our facility in RIICO Industrial Area, Ramchandrapura, Jaipur. Most of Rajasthan's top contractors are our
+  regular customers, and we deliver machines to sites across India.</p>
+  <div class="facts">
+    <div><b>{c["founded"]}</b><span>Established in Jaipur</span></div>
+    <div><b>{years}+ yrs</b><span>Building and servicing machines</span></div>
+    <div><b>30+ yrs</b><span>Founder's industry experience</span></div>
+  </div>
+
+  <h2>Trusted by leading contractors</h2>
+  <ul class="clients">{''.join(f'<li>{esc(x)}</li>' for x in c['clients'])}</ul>
+  <p>…and most of the top contractors of Rajasthan, who buy from us again and again.</p>
+
+  <h2>What we do</h2>
+  <ul class="svc">{''.join(f'<li>{esc(x)}</li>' for x in c['services'])}</ul>
+  <p>We build machines to suit each customer's site and job, and look after them after delivery. Our range covers {cats}
+  and more. <a href="/#catalog">See all machines</a>.</p>
+
+  <h2>Our founder</h2>
+  <div class="founder">
+    <div class="av">{''.join(w[0] for w in f["name"].split())}</div>
+    <div><b>{esc(f["name"])}</b><p>{esc(f["title"])} · {esc(f["education"])} · {esc(f["experience"])}</p></div>
+  </div>
+
+  <h2>Exhibitions</h2>
+  <p>You can meet us at construction and industry exhibitions in Jaipur, including {expos}.</p>
+
+  <h2>Visit or contact us</h2>
+  <p>H1/2200, RIICO Industrial Area, Ramchandrapura, Jaipur, Rajasthan 302022.<br />
+  Call or WhatsApp <a href="tel:{PHONE_1}">{PHONE_1_LABEL}</a> or <a href="tel:{PHONE_2}">{PHONE_2_LABEL}</a> ·
+  <a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{MAPS_URL}" target="_blank" rel="noopener">Get directions</a></p>
+</main>
+{FOOTER}
+{FAB}
+</body>
+</html>
+'''
+
+
 def build():
     # Homepage: inline the catalogue data, render cards and categories for search engines, add business schema
     cats_html = ''.join(
@@ -294,6 +373,7 @@ def build():
     website = {'@context': 'https://schema.org', '@type': 'WebSite', 'name': BRAND, 'url': SITE + '/'}
     out = index
     out = replace_section(out, 'SCHEMA', ld(ORG) + ld(website))
+    out = replace_section(out, 'TRUST', trust_strip())
     out = replace_section(out, 'CATS', cats_html)
     out = replace_section(out, 'GRID', ''.join(card(p) for p in PRODUCTS))
     out = replace_section(out, 'DATA', f'<script id="catalog-data" type="application/json">{data}</script>')
@@ -306,7 +386,10 @@ def build():
         (ROOT / c['slug']).mkdir(exist_ok=True)
         (ROOT / c['slug'] / 'index.html').write_text(category_page(c))
 
-    urls = ['/'] + [f"/{c['slug']}/" for c in catalog['categories']] + [f"/{p['slug']}/" for p in PRODUCTS]
+    (ROOT / 'about').mkdir(exist_ok=True)
+    (ROOT / 'about' / 'index.html').write_text(about_page())
+
+    urls = ['/', '/about/'] + [f"/{c['slug']}/" for c in catalog['categories']] + [f"/{p['slug']}/" for p in PRODUCTS]
     (ROOT / 'sitemap.xml').write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + ''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n')
@@ -317,7 +400,10 @@ def build():
         'User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\n'
         f'Sitemap: {SITE}/sitemap.xml\n')
     lines = [f'# {BRAND}', '',
-             f'> Construction machinery supplier in Jaipur, Rajasthan, India. Delivers across India. '
+             f'> Construction machinery manufacturer and supplier in Jaipur, Rajasthan, India, since {COMPANY["founded"]}. '
+             f'Manufactures, supplies, assembles, customises and services machines. Founded by {COMPANY["founder"]["name"]} '
+             f'({COMPANY["founder"]["education"]}, {COMPANY["founder"]["experience"]}). '
+             f'Customers include {", ".join(COMPANY["clients"])} and most top contractors of Rajasthan. Delivers across India. '
              f'Phone/WhatsApp {PHONE_1_LABEL}, {PHONE_2_LABEL}. Email {EMAIL}. '
              f'Address: {ADDRESS["streetAddress"]}, Jaipur, Rajasthan {ADDRESS["postalCode"]}.', '']
     for c in catalog['categories']:
