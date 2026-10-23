@@ -93,14 +93,6 @@
       </div>
       <div class="info"><div class="row"><div class="name">Walk Behind Double Drum Roller</div></div></div>
     </a>
-    <a class="p" href="/concrete-vibrator-table/" data-slug="concrete-vibrator-table">
-      <div class="ph">
-        <span class="tr">↗</span>
-        <img class="fill" src="/img/concrete-vibrator-table.jpg" alt="" aria-hidden="true" loading="lazy" />
-        <img src="/img/concrete-vibrator-table.jpg" alt="Concrete Vibrator Table" loading="lazy" />
-      </div>
-      <div class="info"><div class="row"><div class="name">Concrete Vibrator Table</div></div></div>
-    </a>
     <a class="p" href="/plate-compactor/" data-slug="plate-compactor">
       <div class="ph">
         <span class="tr">↗</span>
@@ -165,7 +157,7 @@ function sync() {
   thumbs.forEach((b, k) => b.classList.toggle('on', k === i));
   if (prev) { prev.hidden = i === 0; next.hidden = i === n - 1; count.textContent = `${i + 1} / ${n}`; }
 }
-track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+track.addEventListener('scroll', () => { track.querySelectorAll('video').forEach(v => v.pause()); requestAnimationFrame(sync); }, { passive: true });
 sync();
 </script>
 </body>

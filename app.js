@@ -72,10 +72,13 @@ let CUR = null, sheetInHistory = false;
 function openModal(p) {
   if (!p) return;
   CUR = p;
-  M.track.innerHTML = p.images.map((src, i) => `<img src="${src}" alt="${p.name} – photo ${i + 1}" onclick="openViewer(this.src)" />`).join('');
-  // Small photos under the main one: tap to jump to that photo
-  M.thumbs.innerHTML = p.images.length > 1 ? p.images.map((src, i) =>
-    `<button type="button" class="${i ? '' : 'on'}" onclick="goTo(${i})" aria-label="Photo ${i + 1}"><img src="${src}" alt="" loading="lazy" /></button>`).join('') : '';
+  const media = [...p.images.map(src => ({ src })), ...(p.videos || []).map(v => ({ ...v, video: true }))];
+  M.track.innerHTML = media.map((m, i) => m.video
+    ? `<video src="${m.src}" poster="${m.poster}" controls playsinline preload="none"></video>`
+    : `<img src="${m.src}" alt="${p.name} – photo ${i + 1}" onclick="openViewer(this.src)" />`).join('');
+  // Small photos under the main one: tap to jump to that photo or video
+  M.thumbs.innerHTML = media.length > 1 ? media.map((m, i) =>
+    `<button type="button" class="${i ? '' : 'on'}${m.video ? ' vid' : ''}" onclick="goTo(${i})" aria-label="${m.video ? 'Video' : 'Photo ' + (i + 1)}"><img src="${m.video ? m.poster : m.src}" alt="" loading="lazy" /></button>`).join('') : '';
   document.getElementById('mCat').textContent = catLabel(p.cat);
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mDesc').textContent = p.desc || '';
@@ -92,7 +95,9 @@ function openModal(p) {
   history.pushState({ product: p.slug }, '', `/${p.slug}/`);
   sheetInHistory = true;
 }
+function pauseVideos() { M.track.querySelectorAll('video').forEach(v => v.pause()); }
 function hideSheet() {
+  pauseVideos();
   M.el.classList.remove('show'); M.el.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = ''; CUR = null;
 }
@@ -123,7 +128,7 @@ function updateArrows() {
   [...M.thumbs.children].forEach((b, k) => b.classList.toggle('on', k === i));
   M.thumbs.children[i]?.scrollIntoView({ inline: 'nearest', block: 'nearest' });
 }
-M.track.addEventListener('scroll', () => requestAnimationFrame(updateArrows), { passive: true });
+M.track.addEventListener('scroll', () => { pauseVideos(); requestAnimationFrame(updateArrows); }, { passive: true });
 
 // Phones: swipe down on the photos or the top of the details to close the sheet
 let dragY = null;

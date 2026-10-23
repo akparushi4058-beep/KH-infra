@@ -174,17 +174,26 @@ def product_page(p):
         'brand': {'@type': 'Brand', 'name': BRAND}, 'category': cat['title'],
         'seller': {'@id': SITE + '/#business'},
     }
+    videos = p.get('videos', [])
+    video_schemas = [{
+        '@context': 'https://schema.org', '@type': 'VideoObject', 'name': v['title'], 'description': p['desc'],
+        'thumbnailUrl': absolute(v['poster']), 'contentUrl': absolute(v['src']), 'uploadDate': v['uploaded'],
+    } for v in videos]
     faq_list = faqs(p)
     images = ''.join(
         f'<a href="{img}" target="_blank" rel="noopener"><img src="{img}" alt="{esc(p["name"])} – photo {i + 1}"'
-        f'{"" if i == 0 else LAZY} /></a>' for i, img in enumerate(p['images']))
-    thumbs = ''.join(f'<button type="button" class="{"on" if i == 0 else ""}" aria-label="Photo {i + 1}">'
-                     f'<img src="{img}" alt="" loading="lazy" /></button>' for i, img in enumerate(p['images'])) \
-        if len(p['images']) > 1 else ''
+        f'{"" if i == 0 else LAZY} /></a>' for i, img in enumerate(p['images'])) + ''.join(
+        f'<video src="{v["src"]}" poster="{v["poster"]}" controls playsinline preload="none" title="{esc(v["title"])}"></video>'
+        for v in videos)
+    media_count = len(p['images']) + len(videos)
+    thumbs = (''.join(f'<button type="button" class="{"on" if i == 0 else ""}" aria-label="Photo {i + 1}">'
+                      f'<img src="{img}" alt="" loading="lazy" /></button>' for i, img in enumerate(p['images']))
+              + ''.join(f'<button type="button" class="vid" aria-label="Video"><img src="{v["poster"]}" alt="" loading="lazy" /></button>'
+                        for v in videos)) if media_count > 1 else ''
     specs = ''.join(f'<dt>{esc(k)}</dt><dd>{esc(v)}</dd>' for k, v in p['specs'].items())
     related = [q for q in PRODUCTS if q['cat'] == p['cat'] and q is not p][:4]
     wa = wa_link(f"Hi {BRAND}, I'm interested in the {p['name']}. Please share price and availability.\n{SITE}{path}")
-    return f'''{head(title, description, path, p['images'][0], ld(product_schema) + ld(crumb_schema))}
+    return f'''{head(title, description, path, p['images'][0], ld(product_schema) + ld(crumb_schema) + ''.join(ld(v) for v in video_schemas))}
 <body class="has-sticky-cta">
 {HEADER}
 <main class="container pd">
@@ -193,7 +202,7 @@ def product_page(p):
     <div class="pd-gallery">
       <div class="pd-stage">
         <div class="pd-track" id="track">{images}</div>
-        {ARROWS if len(p['images']) > 1 else ''}
+        {ARROWS if media_count > 1 else ''}
       </div>
       <div class="pd-thumbs" id="thumbs">{thumbs}</div>
     </div>
@@ -233,7 +242,7 @@ function sync() {{
   thumbs.forEach((b, k) => b.classList.toggle('on', k === i));
   if (prev) {{ prev.hidden = i === 0; next.hidden = i === n - 1; count.textContent = `${{i + 1}} / ${{n}}`; }}
 }}
-track.addEventListener('scroll', () => requestAnimationFrame(sync), {{ passive: true }});
+track.addEventListener('scroll', () => {{ track.querySelectorAll('video').forEach(v => v.pause()); requestAnimationFrame(sync); }}, {{ passive: true }});
 sync();
 </script>
 </body>

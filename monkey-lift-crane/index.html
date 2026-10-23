@@ -85,13 +85,13 @@
 <section class="related"><div class="container">
   <h2>More lifting solutions machines</h2>
   <div class="grid">
-    <a class="p" href="/monkey-hoist-150-kg/" data-slug="monkey-hoist-150-kg">
+    <a class="p" href="/monkey-hoist-crane-clutch-winch/" data-slug="monkey-hoist-crane-clutch-winch">
       <div class="ph">
         <span class="tr">↗</span>
         <img class="fill" src="/img/monkey-hoist-150kg.jpg" alt="" aria-hidden="true" loading="lazy" />
-        <img src="/img/monkey-hoist-150kg.jpg" alt="Monkey Hoist 150 Kgs No Trolley" loading="lazy" />
+        <img src="/img/monkey-hoist-150kg.jpg" alt="Monkey Hoist Crane with Clutch Winch" loading="lazy" />
       </div>
-      <div class="info"><div class="row"><div class="name">Monkey Hoist 150 Kgs No Trolley</div></div></div>
+      <div class="info"><div class="row"><div class="name">Monkey Hoist Crane with Clutch Winch</div></div></div>
     </a>
     <a class="p" href="/monkey-hoist-crane-300-kg/" data-slug="monkey-hoist-crane-300-kg">
       <div class="ph">
@@ -173,7 +173,7 @@ function sync() {
   thumbs.forEach((b, k) => b.classList.toggle('on', k === i));
   if (prev) { prev.hidden = i === 0; next.hidden = i === n - 1; count.textContent = `${i + 1} / ${n}`; }
 }
-track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+track.addEventListener('scroll', () => { track.querySelectorAll('video').forEach(v => v.pause()); requestAnimationFrame(sync); }, { passive: true });
 sync();
 </script>
 </body>

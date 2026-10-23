@@ -138,7 +138,7 @@ function sync() {
   thumbs.forEach((b, k) => b.classList.toggle('on', k === i));
   if (prev) { prev.hidden = i === 0; next.hidden = i === n - 1; count.textContent = `${i + 1} / ${n}`; }
 }
-track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+track.addEventListener('scroll', () => { track.querySelectorAll('video').forEach(v => v.pause()); requestAnimationFrame(sync); }, { passive: true });
 sync();
 </script>
 </body>

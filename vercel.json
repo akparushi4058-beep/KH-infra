@@ -1,3 +1,20 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/monkey-hoist-150-kg/",
+      "destination": "/monkey-hoist-crane-clutch-winch/",
+      "permanent": true
+    },
+    {
+      "source": "/paver-block-machine/",
+      "destination": "/construction-equipment/",
+      "permanent": true
+    },
+    {
+      "source": "/concrete-vibrator-table/",
+      "destination": "/compaction-equipment/",
+      "permanent": true
+    }
+  ]
 }
